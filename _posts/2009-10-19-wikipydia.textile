@@ -1,0 +1,68 @@
+---
+layout: post
+title: Wikipydia
+---
+
+h1. {{ page.title }}
+
+p(meta). 19 October 2009 - James - Brooklyn
+
+I have begun work on a python module for interfacing with the Wikipedia API. It is currently at a 0.1 release and covers the gist of what WikiTrans needs from Wikipedia, though I expect this to expand as time goes by.
+
+"Available here":http://github.com/j2labs/wikipydia/
+
+Finding possible matches for an article name looks like this:
+
+<pre><code>>>> import wikipydia
+>>> articles_found = wikipydia.opensearch('Johns Hopkins University')
+>>> for name in articles_found[1]:
+...     print name
+... 
+Johns Hopkins University
+Johns Hopkins University Press
+Johns Hopkins University School of Medicine
+Johns Hopkins University Hospital
+Johns Hopkins University Applied Physics Laboratory
+Johns Hopkins University SAIS
+Johns Hopkins University School of Education
+Johns Hopkins University in Popular Culture
+Johns Hopkins University Carey Business School
+</code></pre>
+
+Finding language alternatives for articles:
+
+<pre><code>>>> lang_dict = wikipydia.query_language_links('Johns Hopkins University')
+>>> for lang in lang_dict:
+...     print '%s :: %s' % (lang, lang_dict[lang])
+... 
+el :: Πανεπιστήμιο Τζονς Χόπκινς
+eo :: Johns Hopkins Universitato
+de :: Johns Hopkins University
+fr :: Université Johns-Hopkins
+da :: Johns Hopkins University
+fa :: دانشگاه جانز هاپکینز
+ar :: جامعة جونز هوبكينز
+cs :: Johns Hopkins University
+fi :: Johns Hopkinsin yliopisto
+es :: Universidad Johns Hopkins
+</code></pre>
+
+It's also possible to fetch the actual text in either wikimarkup...
+
+<pre><code>>>> wikimarkup_text = wikipydia.query_text_raw('Dennis')
+>>> print wikimarkup_text
+'''Dennis''' or '''Denis''' is a male [[given name|first name]] derived
+...
+</code></pre>
+
+...or rendered html!
+
+<pre><code>>>> rendered_text = wikipydia.query_text_rendered('Dennis')
+>>> print rendered_text
+<p><b>Dennis</b> or <b>Denis</b> is a male <a href="/wiki/Given_name"
+...
+</code></pre>
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
