@@ -1,0 +1,14 @@
+---
+layout: post
+title: The Inaugural Post
+---
+
+h1. {{ page.title }}
+
+p(meta). 19 October 2009 - Brooklyn
+
+First Post on the new GibHub blog! Up next, a strategy for commenting. 
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
