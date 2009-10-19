@@ -1,0 +1,21 @@
+---
+layout: post
+title: Workflow thoughts on from-scratch vs improving-existing
+---
+
+h1. {{ page.title }}
+
+p(meta). 11 October 2009 - James - Brooklyn
+
+My current thinking is that we have Source Articles, Source Sentences and then Translated Sentences as our vital components. A translated document should not exist as incomplete and therefore should be a timestamped capture of some completed work. If someone attempts to translate an article from scratch but chooses to give us just one sentence instead, I believe the sentence is still meaningful but does not warrant creating a Translated Article object.
+
+Translated Article objects will likely come into play in two cases ::
+
+# The user has completed translation of an entire article from scratch. We can confirm the translated sentences derive from the source article and the segment id's match the segment id's found in the sentences of the source article (implying the number of sentences is also correct).
+# The user is adjusting an existing translation where all sentences are already in place. A single sentence entry from a user actually constitutes a derivative translation of the existing article. If translated article A consists of sentences (s1, s2, s3), A' would could consist of sentences (s1, s2', s3) where s1 and s3 are carried over from article A.
+
+The current system accounts for this methodology.
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>

@@ -1,0 +1,14 @@
+---
+layout: post
+title: Handling Template Tags
+---
+
+h1. {{ page.title }}
+
+p(meta). 09 October 2009 - James - Brooklyn
+
+The wikipedia API appears to be evolving regularly. I noticed today that it seems to includes some functions for the expansion of templates, an issue known to be complicated. Upon first try of this function it doesn't appear to work properly yet. Must remember to come back to this as it could be a crucial point in whether we can rely on wikimarkup as our data source or continue the somewhat problematic inspection of rendered html.
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>

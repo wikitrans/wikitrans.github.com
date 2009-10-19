@@ -1,0 +1,34 @@
+---
+layout: post
+title: Goopytrans
+---
+
+h1. {{ page.title }}
+
+p(meta). 19 October 2009 - James - Brooklyn
+
+Earlier this month I posted a python module which handles talking to Google for language translations. It is called Goopytrans (GOOgle PYthon TRANSlator).
+
+"Available here":http://github.com/j2labs/goopytrans/
+
+Goopytrans supports translating a single body of text.
+
+<pre><code>>>> goopytrans.translate('bonjour', source='fr', target='en')
+'hello'
+</code></pre>
+
+Multiple bodies of text.
+
+<pre><code>>>> goopytrans.translate_list(('bonjour','merci'), source='fr', target='en')
+['hello', 'thank you']
+</code></pre>
+
+And language detection.
+
+<pre><code>>>> goopytrans.detect('bonjour')
+{'isReliable': False, 'confidence': 0.12033016000000001, 'language': 'fr'}
+</code></pre>
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
