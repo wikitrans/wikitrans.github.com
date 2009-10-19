@@ -1,0 +1,24 @@
+---
+layout: default
+title: WikiTrans
+---
+
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+  
+  <h1>Papers</h1>
+  <ul class="posts">
+    <li><span>21 Aug 2009</span> &raquo; <a href="">Testing testing testing</a></li>
+  </ul>
+  
+  <h1>Open Source Projects</h1>
+  <ul class="posts">
+    <li><a href="http://cs.jhu.edu/~ccb/joshua/">Joshua:</a> Joshua is an open-source decoder for parsing-based machine translation..</li>
+  </ul>
+</div>
+  
