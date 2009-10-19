@@ -7,7 +7,7 @@ h1. {{ page.title }}
 
 p(meta). 19 October 2009 - James - Brooklyn
 
-I have begun work on a python module for interfacing with the Wikipedia API. It is currently at a 0.1 release and covers the gist of what WikiTrans needs from Wikipedia, though I expect this to expand as time goes by.
+I have begun work on a python module for interfacing with the Wikipedia API. It is currently at a 0.1 release and covers the gist of what WikiTrans needs from Wikipedia, though I expect this to expand as time goes by. The Wikipedia API is not yet out of beta and so this module might break unexpectedly from time to time as they iron their API out.
 
 "Available here":http://github.com/j2labs/wikipydia/
 
