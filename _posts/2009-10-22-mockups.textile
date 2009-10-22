@@ -19,7 +19,7 @@ h2. From-scratch translations
 
 We also have two other major concerns about the UI. First, we want to easily facilitate from-scratch translations on a sentence-by-sentence level. My intuition tells me this simply involves a list of sentences and then a field for entering them. A mock-up for this looks like below.
 
-<a href="/images/sentence_pairs_translation.png"><img src="/images/shrunk/sentence_pairs_translation.png" /></a>
+<a href="/images/sentence_pairs_translating.png"><img src="/images/shrunk/sentence_pairs_translating.png" /></a>
 
 *Interestingly, I have found the tools for sentence splitting somewhat lacking and also somewhat diverse.*
 
