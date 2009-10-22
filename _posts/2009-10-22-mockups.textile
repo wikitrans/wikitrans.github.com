@@ -9,6 +9,14 @@ p(meta). 22 October 2009 - James - Brooklyn
 
 Now that a fair part of the underlying system is in place, Chris and I have been discussing the UI. We want the interface to be inviting to users and offer them something to keep them interested in the site while still providing the necessary services for NLP research. To accomplish this we believe we need to focus on the data we can present and also have easily located functionality for assisting the translational mechanisms.
 
+h2. Searching
+
+On each of the screens below you will see a search box. Our current thinking is that we will have some knowledge of what language pair the user is currently interested in. We have discussed possibly using host names, like de-en.wikitrans.org, to indicate the choice. We might also display a list of available language pairs from the users language competancy settings. This particular piece is not completely solved, but we can assume a setting is in place for the sake of the interface.
+
+The search box represents an article title search and the two buttons offer the user a way of telling us which language the title they've entered is in. From there I use the Wikipydia module to ask Wikipedia for more information about available articles. The Wikipedia API currently allows a user to say, "What languages do you have an article for Johns Hopkins University in?" and it returns a list. I discuss this more "here":http://wikitrans.github.com/2009/10/19/wikipydia.html.
+
+What we do after fetching the article is not completely worked out yet either. For example, do we run an initial translation and present a machine translation to the user? Perhaps we show the article in sentence-split form and ask the user to translate the article from scratch? My gut tells me we'll have a metric for our need on an article-by-article basis, perhaps combined with a user setting that will give us an answer.
+
 h2. The article landing page
 
 The first page a user sees is loosely called the <i>articles landing page</i>. It is likely this will become the first page a user sees when visiting the site. There is much to be gained from using a presentation similar to Wikipedia's "Main_Page":http://en.wikipedia.org/wiki/Main_Page layout. For example, replacing "Today's featured article" with "Today's featured translation" and "In the news" with "Recent translations" would cover most of our needs for a landing page. That might look like the screen below.
