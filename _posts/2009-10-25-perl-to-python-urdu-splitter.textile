@@ -11,25 +11,25 @@ h2. NLTK and no Urdu
 
 I have been using "NLTK":http://www.nltk.org/ for sentence splitting while working on Wikitrans. NLTK, in their words, is _Open source Python modules, linguistic data and documentation for research and development in natural language processing, supporting dozens of NLP tasks, with distributions for Windows, Mac OSX and Linux._ The "SVN repository":http://code.google.com/p/nltk/source/checkout also includes a copy of their book Natural Language Processing with Python, which is written by Steven Bird, Ewan Klein and Edward Loper.
 
-I came across NLTK initially while looking for sentence splitters. NLTK has the Punkt Tokenizer for splitting, which works well, but it does not cover Urdu. Chris sent me copy of Danish Munir's urdu-segmenter.pl. Perl! Gasp!
+I came across NLTK initially while looking for sentence splitters. NLTK has the Punkt Tokenizer for splitting, which works well, but it does not cover Urdu. D'oh! So I emailed Chris and he sent me copy of Danish Munir's urdu-segmenter.pl. Perl! Gasp!
 
-Wikitrans is built using Python and I don't want to leave Python just to split some sentences so I sat down and converted Danish's code. I had some corpora that had already been split and stored in XML but I didn't have the input corpora. And on top of that, I didn't actually have any corpora that Danish's code had split. I just had some already split sentences from NIST.
+Wikitrans is built using Python and I don't want to run code outside Python just to split some sentences so I sat down and converted Danish's code. I had some corpora that had already been split and stored in XML but I didn't have the input corpora. And on top of that, I didn't actually have any corpora that Danish's code had split. I just had some already split sentences from NIST.
+
+This exercise is useful because it also forces me to think about an API for which the splitting mechanism of WikiTrans will conform. NLTK for some languages, urdu_segmenter for Urdu and we'll approach future limitations as we come to them.
 
 h2. To the wiki!
 
 I tuned my browser to "Wikipedia's Urdu entry":http://en.wikipedia.org/wiki/Urdu and quickly found the "Urdu version of this page":http://ur.wikipedia.org/wiki/%D8%A7%D8%B1%D8%AF%D9%88. It didn't take long to find my computer getting confused by the right-to-left nature of Urdu. For example, if I highlighted the last character in a sentence (right-most) and copied it, my paste would sometimes give me the left-most character. Because I don't read Urdu, it was difficult for me to understand exactly what was causing this. I also don't want to waste time debugging, so I needed a solution quickly.
 
-To grab the text with no concern for how my browser or editors were going to handle the left-to-rightness and right-to-leftness, I hopped into Python and wrote some code to fetch the page and strip out the HTML. I'm a big Python fan, I'd like to take the time to explain how I did what I did.
+To grab the text with no concern for how my browser or editors were going to handle the left-to-rightness and right-to-leftness, I hopped into Python and wrote some code to fetch the page and strip out the HTML. I'm a big Python fan so I'd like to take the time to explain how I did what I did.
 
-First, Wikipedia does some stuff by looking at the referrer of the system retrieving data. Those with a sophisticated mobile device will see this funtionality when they're redirected to a mobile version of Wikipedia. However, if I use Python's urllib to retreive data, Wikipedia will get confused (it returns a multilingual page explaining that there is something broken) so it's important to set a referrer to something Wikipedia feels comfortable with. I told Wikipedia my program is Firefox and now the data retrieval works just fine.
+First, Wikipedia does some stuff by looking at the referrer of the system retrieving data. Those with a sophisticated mobile device will see this funtionality when they're redirected to a "mobile version of Wikipedia":http://en.m.wikipedia.com/wiki?search=urdu. However, if I use Python's urllib to retreive data, Wikipedia will get confused (it returns a multilingual page explaining that there is something broken) so it's important to set a referrer to something Wikipedia feels comfortable with. I told Wikipedia my program is Firefox and now the data retrieval works just fine.
 
-From there I am able to use Python's "BeautifulSoup":http://www.crummy.com/software/BeautifulSoup/ package to get at the text. From their web page: _Beautiful Soup is a Python HTML/XML parser designed for quick turnaround projects like screen-scraping._ They don't lie, it's easy to scrape text using BeautifulSoup, as you'll see in the code below.
-
-The rest of the program is simply some basic file I/O.
+From there I am able to use Python's "BeautifulSoup":http://www.crummy.com/software/BeautifulSoup/ package to get at the text. From their web page: _Beautiful Soup is a Python HTML/XML parser designed for quick turnaround projects like screen-scraping._ They don't lie, it's easy to scrape text using BeautifulSoup, as you'll see in the code below. The rest of this program is some basic file I/O.
 
 <script src="http://gist.github.com/218144.js"></script>
 
-urllib uses an opener, but I wanted to set the version field of the opener to match the referrer Firefox uses. So I subclass FancyURLOpener to override the version attribute and then tell urllib to use my opener instead of it's default. urllib makes fetching data from url's trivial, so opening the url is just one line. Then there's a second line to actually read the data.
+First thing to do is subclass urllib's FancyURLopener. This will let us set a version field to the referrer string Firefox uses. Then, tell urllib to use our opener. This keeps urllib's behavior as normal with the exception of url opening mechanism. urllib makes fetching data from url's trivial, so opening the url is just one line and reading the data is another line.
 
 My use of BeautifulSoup is somewhat simple too and is similar to how I use the library in WikiTrans. First, I create a soup object out of the html I got from urllib. Then I loop over all the paragraph tags. I ask for all the text in each paragraph, which is returned as a list (findAll returns lists) generally consisting of 1 item. I join the items of the list (to be safe) and then put this text in my p_texts list.
 
@@ -37,7 +37,7 @@ From there I join the paragraph texts by two newlines, so the text looks somewha
 
 The end result, at the time of writing, looks like this: "urdu.txt":/data/urdu.txt. _Your browser will not display this correctly. Downloading the file to your computer and viewing it locally should work fine though._
 
-h2. Python swallowed the Perl whole
+h2. Python swallowed the Perl 
 
 At least half of Danish's code appeared to be command line processing. This is made easy in Python (Perl too, actually) using getopt. Python has something even easier called optparse which handles autogenerating help menus and some other nice things for you. So first, let's look at Danish's code and inspect what it's doing.
 
@@ -47,11 +47,15 @@ Lines 64-108 are the command line processing and a little regex for getting the 
 
 I do not speak Urdu, so part of my programming involved simply copying Danish's logic over to Python without fully understanding what wisdom he might be passing on. But as I did this it became clear the real meat of this tool is in line 126 when he uses a regex to split on particular characters. He expresses these characters as their unicode values, but I found this tricky to read so I converted this, in my implementation, to something easier to read (eg. QUESTION, DASH, BULLET, CR, ELLIPSIS, FULL_STOP).
 
-The documenting printing is fairly obvious except for one piece, the part that prints the follow up sentence. You'll see Danish checks the sentences to see if they are punctuation and, if so, prints the next sentence. This is a neat trick that works because of the split on line 126. For text that looks like '.text more some is this .text some is this', the split produces <code>('.', 'text more some is this', '.', 'text some is this')</code>. So when we see a period, we need to also print the next sentence to preserve the right-to-left nature of Urdu.
+If we were to split '.text more some is this .text some is this' we would get back a data structure that looks like ('.', 'text more some is this', '.', 'text some is this'). Notice the periods (FULL STOP) are part of the structure and independent of the sentence. Upon reading the Urdu code, I mistakenly thought my program would actually read the text in that order. I instead discovered that this is not actually the case as the data is still left-to-right internally. The program actually reads the text like 'this is some text. this is some more text.' and we get a data structure like ('this is some text', '.', 'this is some more text', '.'). My code and Danish's code is writing the data to the file in this order too. It writes them like sentence + terminal on the same line and the display on our computers handles arranging these correctly. An interesting and tricky nuance!
+
+The rest of the code is fairly straight-forward and simply prints the data to a file along with some XML information if the user has requested it.
 
 Here is the Python code. To run this code against urdu.txt, type <code>./urdu_segmenter.py -f urdu.txt</code>
 
 <script src="http://gist.github.com/218174.js"></script>
+
+h2. urdu_segmenter.py vs. NLTK
 --
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
