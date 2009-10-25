@@ -47,7 +47,13 @@ Lines 64-108 are the command line processing and a little regex for getting the 
 
 I do not speak Urdu, so part of my programming involved simply copying Danish's logic over to Python without fully understanding what wisdom he might be passing on. But as I did this it became clear the real meat of this tool is in line 126 when he uses a regex to split on particular characters. He expresses these characters as their unicode values, but I found this tricky to read so I converted this, in my implementation, to something easier to read (eg. QUESTION, DASH, BULLET, CR, ELLIPSIS, FULL_STOP).
 
-If we were to split '.text more some is this .text some is this' we would get back a data structure that looks like ('.', 'text more some is this', '.', 'text some is this'). Notice the periods (FULL STOP) are part of the structure and independent of the sentence. Upon reading the Urdu code, I mistakenly thought my program would actually read the text in that order. I instead discovered that this is not actually the case as the data is still left-to-right internally. The program actually reads the text like 'this is some text. this is some more text.' and we get a data structure like ('this is some text', '.', 'this is some more text', '.'). My code and Danish's code is writing the data to the file in this order too. It writes them like sentence + terminal on the same line and the display on our computers handles arranging these correctly. An interesting and tricky nuance!
+After that split, the program essentially loops over the data and is careful to make sure any grammar found is printed on the same line as the sentence it is used for. The split is careful to make sure the grammar is represented in the splits too.
+
+h2. Left to right slipperiness
+
+I spent the whole time working on this looking at text written from right to left while being somewhat aware of the computer finding this confusing at times. Intuitively, I felt if we were to split '.text more some is this .text some is this' we would get back a data structure that looks like ('.', 'text more some is this', '.', 'text some is this'). I mistakenly thought my program would actually read the text from the file in that order too. I instead discovered that this is not actually the case as the data is still left-to-right internally. _Seems obvious in hindsight..._ 
+
+The program actually reads the text like 'this is some text. this is some more text.' and we get a data structure like ('this is some text', '.', 'this is some more text', '.'). My code and Danish's code is writing the data to the file in this order too. It writes them like sentence + terminal on the same line and the display on our computers handles arranging these correctly. Neat!
 
 The rest of the code is fairly straight-forward and simply prints the data to a file along with some XML information if the user has requested it.
 
