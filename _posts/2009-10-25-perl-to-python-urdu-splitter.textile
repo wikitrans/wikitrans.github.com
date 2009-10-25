@@ -35,7 +35,7 @@ My use of BeautifulSoup is somewhat simple too and is similar to how I use the l
 
 From there I join the paragraph texts by two newlines, so the text looks somewhat normal, and write the data to a file while also telling python the text is in unicode.
 
-The end result, at the time of writing, looks like this: "urdu.txt":/data/urdu.txt.
+The end result, at the time of writing, looks like this: "urdu.txt":/data/urdu.txt. _Your browser will not display this correctly. Downloading the file to your computer and viewing it locally should work fine though._
 
 h2. Python swallowed the Perl whole
 
