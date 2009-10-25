@@ -47,9 +47,9 @@ Lines 64-108 are the command line processing and a little regex for getting the 
 
 I do not speak Urdu, so part of my programming involved simply copying Danish's logic over to Python without fully understanding what wisdom he might be passing on. But as I did this it became clear the real meat of this tool is in line 126 when he uses a regex to split on particular characters. He expresses these characters as their unicode values, but I found this tricky to read so I converted this, in my implementation, to something easier to read (eg. QUESTION, DASH, BULLET, CR, ELLIPSIS, FULL_STOP).
 
-The documenting printing is fairly obvious except for one piece, the part that prints the follow up sentence. You'll see Danish checks the sentences to see if they are punctuation and, if so, prints the next sentence. This is a neat trick that works because of the split on line 126. For text that looks like '.text more some is this .text some is this', the split produces <pre><code>('.', 'text more some is this', '.', 'text some is this')</code></pre>. So when we see a period, we need to also print the next sentence to preserve the right-to-left nature of Urdu.
+The documenting printing is fairly obvious except for one piece, the part that prints the follow up sentence. You'll see Danish checks the sentences to see if they are punctuation and, if so, prints the next sentence. This is a neat trick that works because of the split on line 126. For text that looks like '.text more some is this .text some is this', the split produces <code>('.', 'text more some is this', '.', 'text some is this')</code>. So when we see a period, we need to also print the next sentence to preserve the right-to-left nature of Urdu.
 
-Here is the Python code. To run this code against urdu.txt, type <pre><code>./urdu_segmenter.py -f urdu.txt</code></pre>
+Here is the Python code. To run this code against urdu.txt, type <code>./urdu_segmenter.py -f urdu.txt</code>
 
 <script src="http://gist.github.com/218174.js"></script>
 --
