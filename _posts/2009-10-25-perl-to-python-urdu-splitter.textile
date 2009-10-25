@@ -62,6 +62,12 @@ Here is the Python code. To run this code against urdu.txt, type <code>./urdu_se
 <script src="http://gist.github.com/218174.js"></script>
 
 h2. urdu_segmenter.py vs. NLTK
+
+A particular difference between this splitter and NLTK's is the use of regex. Splitting on a period, in English, is not going to perfect. For example, it will choke on "I think Washington D.C. is neato." NLTK's punkt is based off machine learning techniques so it handles this better, but I found it is also not perfect. For example, NLTK will also choke on "I think Washington D.C. is neato." but it will handle "I think Washington D. C. is neato" just fine. The difference being the space between D. and C. in the sentence.
+
+I would really like some feedback on people's views of sentence splitting if anyone is interested. Please "email":mailto:jdennis@gmail.com me.
+
+<script src="http://gist.github.com/218198.js"></script>
 --
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
