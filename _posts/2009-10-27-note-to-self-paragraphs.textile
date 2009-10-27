@@ -1,0 +1,15 @@
+---
+layout: post
+title: Note to self: Handle Paragraphs
+---
+
+h1. {{ page.title }}
+
+p(meta). 27 October 2009 - James - Brooklyn
+
+I am currently not handling paragraphs correctly. It didn't occur to me until I was looking at a rendered translation that the concept of paragraphs has disappeared. 
+
+If you consider each sentence to be a "Constructicon":http://en.wikipedia.org/wiki/Constructicons, I am now facing "Devastator":http://en.wikipedia.org/wiki/Devastator_%28Transformers%29.
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
