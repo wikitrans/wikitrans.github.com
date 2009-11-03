@@ -57,7 +57,7 @@ There is one other place that language information is stored; the user profile. 
 
 h2. Search Field
 
-The search field currently shows the user a list of translated articles using a case-insensitive *query* type match. For example, if I search for "den", the "Dennis" article will show up in the list. I think I will eventually set this to automatically show the best translation but it's not there yet.
+The search field currently shows the user a list of translated articles using a case-insensitive and contains type match. For example, if I search for "den", the "Dennis" article will show up in the list. I think I will eventually set this to automatically show the best translation but it's not there yet.
 
 h2. Commands
 
