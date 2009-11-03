@@ -55,11 +55,11 @@ There is one other place that language information is stored; the user profile. 
 
 <a href="/images/2009-11-02-current-system-design-and-thoughts/language-competency.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/language-competency.png" /></a>
 
-h2.Search Field
+h2. Search Field
 
 The search field currently shows the user a list of translated articles using a case-insensitive *query* type match. For example, if I search for "den", the "Dennis" article will show up in the list. I think I will eventually set this to automatically show the best translation but it's not there yet.
 
-h2.Commands
+h2. Commands
 
 I have a command called <code>./manage.py update_wiki_articles</code> which runs through the Articles Of Interest list and creates source article entries along with the sentence segments. It automatically creates Translation Requests using the default translator. I might add a flag to toggle whether a Translation Request is made, but I think that's unlikely unless we find users aren't giving us translations from scratch.
 
