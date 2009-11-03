@@ -75,7 +75,7 @@ h2. Featured Translation
 
 This is currently just a thing an admin user sets. It's probably worth coming up with a system for automating this, but that will have to wait for when we have translation quality metrics in place.
 
-<a href="/images/2009-11-02-current-system-design-and-thoughts/article-landing.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/article-landing.png" /></a>
+<a href="/images/2009-11-02-current-system-design-and-thoughts/articles-landing.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/articles-landing.png" /></a>
 
 h2. Article Rendering
 
