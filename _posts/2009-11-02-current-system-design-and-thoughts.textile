@@ -1,0 +1,115 @@
+---
+layout: post
+title: Current system design and some thoughts here and there
+---
+
+h1. {{ page.title }}
+
+p(meta). 02 October 2009 - James - Brooklyn
+
+The system is coming along nicely. This blog post comes from a fairly long email I wrote over the weekend to Chris explaining some of the main parts of the design and we agreed that it would make for a good blog post.
+
+And! There are actual screenshots (not mockups). But first I'll go over some of the internals.
+
+h2. Article Of Interest
+
+This is an object that I use as a hint of the kind of work we need. For example, I typically enter an AOI with a Title of "Dennis", title language "en" and target lang "de". I see the database table representing this object as eventually becoming a place where we store lists of articles we'd like to work on soon along with a priority level. The table could be fed it's contents from wikirank or some other method of deciding what we think is worth spending time on.
+
+h2. Source Article and Sentences
+
+The source article object is essentially a title, timestamp, wikipedia revision id and mapping to the source sentences that make up the article. Because the sentences come from an article, the source article object has logic for generating the source sentence objects. This is done when the article is saved. The source language is mapped to a tokenizer from NLTK, the sentences are split and the article is saved.
+
+The sentences have the article as foreign key, in addition to also storing the sentence text, segment id and a boolean which represents whether or not the sentence is the last sentence in a paragraph.
+
+h2. Translation Request
+
+A Translation Request is basically a queue table. A TR consists of a Source Article, Target Language, date and Translator. The translator might be "Google", "Mechanical Turk" or "Human". As part of my testing I have been using a command <code>./manage.py translate_google</code> that fulfills any translation requests with the translator as "Google" using the Goopytrans Python module.
+
+h2. Translated Article and Sentences
+
+The Translated Article is somewhat obvious in it's design. It points to the Source Article, has a translated title, timestamp, language and sentences mapping. It also has a parent field which can point to another translated article letting us map translational improvements from article to article.
+
+The Translated Sentence objects have a segment_id, mapping to the source sentence from which they derive, translated text, translated by (username or machine name), language, translation date, best and end of paragraph marker. A lot of the functionality should be obvious, but the best flag deserves some explanation. 
+
+The best flag serves to tell us which translated sentence is the best one out of all translations for a particular source sentence. Ideally, we'd always show users the best possible translation for an article, unless they ask for a specific version. The best flag will let us load all the best sentences for a particar article in a single query. Maintaining this flag, however, has the potential to be tricky so I'm hoping to figure out a better method when we reach the point where translations are built from their best components on the fly.
+
+h2. Users
+
+When a user first comes to the page, they sign up and are greeted with a page telling them a little about what WikiTrans is.
+
+<a href="/images/2009-11-02-current-system-design-and-thoughts/wikitrans-landing.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/wikitrans-landing.png" /></a>
+
+This is what the sign-up page looks like. WikiTrans also has OpenID support, but I haven't tested it much yet. 
+
+<a href="/images/2009-11-02-current-system-design-and-thoughts/sign-up.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/sign-up.png" /></a>
+
+Once they've signed up they are given a user profile. It'd be nice for users to fill these out but it's not necessary. I think I will likely add avatar, and gravatar, support to the user profiles after the core funcitonailty is together. Notice the language settings in the user profile.
+
+<a href="/images/2009-11-02-current-system-design-and-thoughts/editing-profile.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/editing-profile.png" /></a>
+
+h2. Language Competency
+
+There is a tab in the UI for "Languages" that lets a user enter some information regarding their competency with the languages currently supported by WikiTrans. This list is used throughout the system to determine how to present articles to a user. If a user is fluent in Spanish, we would like their help with our Spanish translations. It is also useful to know how good a user is at a particular language so LC's have a field for telling us if they speak the language natively, took a little bit in school, etc.
+
+There is one other place that language information is stored; the user profile. A user's profile has two language fields which are also taken into account throughout the system: display language and native language. The end result is any languages found in the native and display are used in addition to the LC.
+
+<a href="/images/2009-11-02-current-system-design-and-thoughts/language-competency.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/language-competency.png" /></a>
+
+h2.Search Field
+
+The search field currently shows the user a list of translated articles using a case-insensitive *query* type match. For example, if I search for "den", the "Dennis" article will show up in the list. I think I will eventually set this to automatically show the best translation but it's not there yet.
+
+h2.Commands
+
+I have a command called <code>./manage.py update_wiki_articles</code> which runs through the Articles Of Interest list and creates source article entries along with the sentence segments. It automatically creates Translation Requests using the default translator. I might add a flag to toggle whether a Translation Request is made, but I think that's unlikely unless we find users aren't giving us translations from scratch.
+
+The other command, as I mentioned above, is <code>./manage.py translate_google</code> which runs through the Translation Request list and translates anything asking for Google as the translator.
+
+h2. Bootstrapping a clean system
+
+I tend to wipe the DB somewhat often as the data model is changing frequently. Writing a system to help people translate Wikipedia articles in every lingual direction as many times as they want turns out to be hard to get right the first time!
+
+To get the system going, I build the db using <code>./manage.py syncdb</code>, enter an admin user and then start the server using <code>./manage.py runserver</code>. I go to http://127.0.0.1:8000/admin, login, and then enter an Article Of Interest. From there, I run <code>./manage.py update_wiki_articles</code> and <code>./manage.py translate_google</code> and I'm off.
+
+h2. Featured Translation
+
+This is currently just a thing an admin user sets. It's probably worth coming up with a system for automating this, but that will have to wait for when we have translation quality metrics in place.
+
+<a href="/images/2009-11-02-current-system-design-and-thoughts/article-landing.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/article-landing.png" /></a>
+
+h2. Article Rendering
+
+I didn't realize it at first, but the sentence splitting was initially done with no concern for paragraphs. I have adjusted the system so that the last sentence in a paragraph has an "end_of_paragraph" flag set. From there I have two utility functions, one for straight up text and the other for html (we can extend for xml). I use this flag to wrap paragraphs in the appropriate <p> and </p> html tags or to put two \n's at the end of a text block. The rendering actually looks quite nice now.
+
+h2. Language and version tracking
+
+The url's for translated articles contain "en-de" indicating the translation went from english to German. This is basically a place-holder to carry functionality that will eventually be en-de.wikitrans.org without having to build that functionality out yet. 
+
+Versioning is basically going to function in two ways. One, you can go to url.com/articles/translation/en-de/Dennis to get the latest translation (eventually, this will be the best translation) or you can to go url.com/articles/translation/en-de/Dennis/article_id to get a specific translation. Source articles work almost the same way but the url looks like url.com/articles/source/en/Dennis.
+
+Because the versions aren't necessarily linear descendents from the source article I have chosen to simply use article id's. The source articles have the wikipedia revision id so we can map back to articles in Wikipedia. The translations can happen in any order though. User A translates document X, then user B makes some changes. Perhaps user C makes a totally clean translation of document X. We now have a tree.
+
+h2. Article Lists
+
+The article lists are basically a way for a user to see what information the system contains. This is based on their language competency entries. A user profile contains the language they speak natively and the language they'd like the system to display itself in (no logic here yet) and the language competencies function as filters for the articles we show a user. So if a user has entered an LC in German, we show them articles in German as part of the list. This will help filter things.
+
+<a href="/images/2009-11-02-current-system-design-and-thoughts/articles-list.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/articles-list.png" /></a>
+
+I am going to make a Source Article list and a Translated Article list, but the general list will probably default to both.
+
+h2. Entering Translations
+
+As of right now, the functionality for entering translations from scratch is in place using the sentence-to-sentence UI shown below. I will likely reuse this for modifying existing Translations until I have more time to build a shnazzy popup box that pops up from highlighting incorrect sentences. 
+
+<a href="/images/2009-11-02-current-system-design-and-thoughts/sentence-mapping.png"><img src="/images/2009-11-02-current-system-design-and-thoughts/shrunk/sentence-mapping.png" /></a>
+
+In the article list, I have the source article listed along with all the possible translations a user might be able to help with. The existing translations will offer the best current translated article (currently, the most recent) and then let the user augment the translation.
+
+I am not sure, yet, how to handle the odd things that turn up in the sentence segmentations. Sometimes the splitting makes mistakes and we end up with a sentence that is basically ".[6]" or something along those lines.
+
+h2. Final thoughts
+
+I am anxious to get this into the hands of the NLP community!
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>

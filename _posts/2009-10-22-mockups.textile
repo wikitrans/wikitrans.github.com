@@ -21,13 +21,13 @@ h2. The article landing page
 
 The first page a user sees is loosely called the <i>articles landing page</i>. It is likely this will become the first page a user sees when visiting the site. There is much to be gained from using a presentation similar to Wikipedia's "Main_Page":http://en.wikipedia.org/wiki/Main_Page layout. For example, replacing "Today's featured article" with "Today's featured translation" and "In the news" with "Recent translations" would cover most of our needs for a landing page. That might look like the screen below.
 
-<a href="/images/articles_landing.png"><img src="/images/shrunk/articles_landing.png" /></a>
+<a href="/images/2009-10-22-mockups/articles_landing.png"><img src="/images/2009-10-22-mockups/shrunk/articles_landing.png" /></a>
 
 h2. From-scratch translations
 
 We also have two other major concerns about the UI. First, we want to easily facilitate from-scratch translations on a sentence-by-sentence level. My intuition tells me this simply involves a list of sentences and then a field for entering them. A mock-up for this looks like below.
 
-<a href="/images/sentence_pairs_translating.png"><img src="/images/shrunk/sentence_pairs_translating.png" /></a>
+<a href="/images/2009-10-22-mockups/sentence_pairs_translating.png"><img src="/images/2009-10-22-mockups/shrunk/sentence_pairs_translating.png" /></a>
 
 _Interestingly, I have found the tools for sentence splitting somewhat lacking and also somewhat diverse._
 
@@ -37,7 +37,7 @@ It seems important that correcting translation be done with an easy system. We t
 
 Handling the translated sentences and their relation to translated articles will be done in a variable way. We want to allow the translated articles to be built from the best translated sentences we have, but determining the best translated sentence is not totally straight-forward. For now, we will track all of the sentences and probably just display the latest translated sentence in a sequence of sentences representing the translated article. Mock-up below.
 
-<a href="/images/correcting_translation.png"><img src="/images/shrunk/correcting_translation.png" /></a>
+<a href="/images/2009-10-22-mockups/correcting_translation.png"><img src="/images/2009-10-22-mockups/shrunk/correcting_translation.png" /></a>
 --
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
