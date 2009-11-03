@@ -79,7 +79,7 @@ This is currently just a thing an admin user sets. It's probably worth coming up
 
 h2. Article Rendering
 
-I didn't realize it at first, but the sentence splitting was initially done with no concern for paragraphs. I have adjusted the system so that the last sentence in a paragraph has an "end_of_paragraph" flag set. From there I have two utility functions, one for straight up text and the other for html (we can extend for xml). I use this flag to wrap paragraphs in the appropriate <p> and </p> html tags or to put two \n's at the end of a text block. The rendering actually looks quite nice now.
+I didn't realize it at first, but the sentence splitting was initially done with no concern for paragraphs. I have adjusted the system so that the last sentence in a paragraph has an "end_of_paragraph" flag set. From there I have two utility functions, one for straight up text and the other for html (we can extend for xml). I use this flag to wrap paragraphs in the appropriate &lt;p&gt; and &lt;/p&gt; html tags or to put two \n's at the end of a text block. The rendering actually looks quite nice now.
 
 h2. Language and version tracking
 
@@ -105,7 +105,7 @@ As of right now, the functionality for entering translations from scratch is in 
 
 In the article list, I have the source article listed along with all the possible translations a user might be able to help with. The existing translations will offer the best current translated article (currently, the most recent) and then let the user augment the translation.
 
-I am not sure, yet, how to handle the odd things that turn up in the sentence segmentations. Sometimes the splitting makes mistakes and we end up with a sentence that is basically ".[6]" or something along those lines.
+I am not sure, yet, how to handle the odd things that turn up in the sentence segmentations. Sometimes the splitting makes mistakes and we end up with a sentence that is basically ".&#91;6&#93;" or something along those lines.
 
 h2. Final thoughts
 
