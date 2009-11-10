@@ -13,17 +13,19 @@ I used to be a programmer on *The Street*. Those that know me personally know I 
 
 h2. Robin Hood
 
-Robin Hood is a charity that focuses on those in distress in New York City. It was started by some prominent Wall St folks and manages to raise incredible amounts of money each year and donates 100% of it to those in need.
+<a href="http://robinhood.org">Robin Hood</a> is a charity that focuses on those in distress in New York City. It was started by some prominent Wall St folks and manages to raise incredible amounts of money each year and donates 100% of it to those in need.
 
 The team at Robin Hood is renowned for their experimental nature with regard to processes for raising money. They are also known for trying to figure out the source of poverty and go after that rather than simply putting bandaids on the problems.
 
-h2. ifed.robinhood.org
+h2. IFed and #feednyc
+
+<a href="http://ifed.robinhood.org">http://ifed.robinhood.org</a>
 
 I was contacted by a friend of mine at The New York Times and was asked if I'd like to help explore how to integrate social media with Robin Hood's cause. I couldn't resist the chance to help those in need, especially after my stint on Wall St.
 
 After a couple meetings we decided we'd build a system to help spread our message across Facebook, Twitter and Flickr. John Merlino, a designer from <a href="http://www.freshthrills.com">FRESHTHRILLS</a>, whom I've worked on multiple projects with, worked on the graphics and I did the programming for what eventually became known as Robin Hood's I Fed page.
 
-We had a successful launch on Monday and the message flew through Twitter. It's success has led to John and myself being disignated cochairs of the fund-raising event on Thursday, which Tiki Barber of the New York Giants will be hosting.
+We had a successful launch on Monday and the message flew through Twitter. You can see it's message propagated by searching for #feednyc or by simply visiting the IFed page. It's success has led to John and myself being disignated cochairs of the fund-raising event on Thursday, which Tiki Barber of the New York Giants will be hosting.
 
 If you're feeling philanthropic and can part with some money, please head over to <a href="http://ifed.robinhood.org">ifed.robinhood.org</a> for more information on how you can help. You can also get up-to-the-minute listings on what the twitter world is saying about Robin Hood's holiday message. If you can't spare any money this winter, please just spread the message using our Twitter or Facebook tools on the left side of the page.
 
