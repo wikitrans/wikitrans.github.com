@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My face: before and after Mechanical Turk
+title: My face before and after Mechanical Turk
 ---
 
 h1. {{ page.title }}
