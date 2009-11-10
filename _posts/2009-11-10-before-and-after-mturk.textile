@@ -13,7 +13,7 @@ h2. This is what I looked like just before I started working with Mechanical Tur
 
 h2. And this is me after working with Mechanical Turk.
 
-<a href="/images/2009-11-10-after-and-after-mturk/aftermturk.jpg"><img src="/images/2009-11-10-after-and-after-mturk/shrunk/aftermturk.jpg" /></a>
+<a href="/images/2009-11-10-before-and-after-mturk/aftermturk.jpg"><img src="/images/2009-11-10-before-and-after-mturk/shrunk/aftermturk.jpg" /></a>
 
 --
 
