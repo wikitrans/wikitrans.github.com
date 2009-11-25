@@ -1,0 +1,75 @@
+---
+layout: post
+title: First thoughts on the MTurk API
+---
+
+h1. {{ page.title }}
+
+p(meta). 25 November 2009 - James - Brooklyn
+
+h2. No Python!
+
+First, Amazon officially supports C#, Java, Perl and Ruby. They don't make any mention of Python anywhere except for <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=446">here</a>, which I found using Google. This implementation isn't really an implementation either. It's a wrapper around Python's SOAP.py. There is also a REST <i>implementation</i>, but it's equally inconsequential.
+
+See the section on minimal API implementations in <a href="http://wikitrans.github.com/2009/11/24/pyfacebook-idl-web-apis.html">my previous post</a> for why I dislike Amazon's current offerings so much.
+
+h2. The Documentation and Getting Started Guide
+
+Upon finding the Python implementation incredibly lacking, I dived into the documentation assuming I'd have to build the Python module myself. The AWS documentation starts <a href="http://aws.amazon.com/documentation/">here</a> but I immediately went to the <a href="http://docs.amazonwebservices.com/AWSMechTurk/latest/AWSMechanicalTurkGettingStartedGuide/">Getting Started Guide</a>. The documentation uses html frames so I can't link to specific pieces of the documentation without also losing the navigation... First, no Python. Now this!
+
+The MTurk Getting Started Guide walks one through setting up their account and creating some Human Intelligence Tasks (HITs). Also covered is how to programmatically create hits using C#, Java, Perl or Ruby. I figured the Ruby implementation is most likely to be similar to however my Python implementation will end up, so I spent some time reading about that.
+
+Generally, a user creates the HIT title, description, number of assignments, reward (payment amount and currency), question and then any keywords. The java implementation appears to support passing the questions to amazon via files. The Ruby implementation, however, did not.
+
+h2. The Developer Guide and API Reference
+
+The <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2008-08-02/">developer guide</a> is a general overview of how the data is structured and what the available functions do. It covers the availability of SOAP and REST and explains a bit about how the requests are structured in the Making Requests section. Both REST and SOAP respond with XML.
+
+<i>Let's recap: No Python support, the documentation is in frames and now I find no support for JSON!</i>
+
+Anyway, working with HITs is a lot like working with typical workflow systems. The hits can be in certain states and a programmer can make decisions about how to act according to the states of the HIT. For example, if a HIT has been worked on and is ready for review it will have a Reviewable status. I can call the GetReviewableHITs function to get a list of HIT IDs that are reviewable and then decide whether to approve or reject the answer using ApproveAssignment or RejectAssignment accordingly. Assignments are MTurk lingo for answers to HITs.
+
+A typical workflow is 1) create the hit, 2) a worker works on it, making the hit reviewable, 3) the requestor (person who created the hit) accepts or rejects the hit. If the hit is rejected, it is encouraged to explain why using a RequesterFeedback message which the worker will receive.
+
+Inbetween steps 1 and 2 from above is the opportunity to setup qualification settings. A qualification is a property of a worker that represents a worker's skill, ability or reputation. All of these can be used to determine whether or not to assign the task to particular workers. Qualifications can also include Qualification tests which are fairly free form like HITs. It is possible to include an answer key to make automating the qualification process possible for simple qualifications. Once a worker has been qualified, they are assumed to be qualified until the qualification is revoked.
+
+MTurk offers a notification system for keeping track of HITs. The notifications can occur when:
+
+# A worker accepts a HIT
+# A worker abandons an assignment
+# A worker returns an assignment
+# A worker submits an assignment
+# A HIT becomes "reviewable"
+# A HIT expires
+
+Instead of calling GetReviewableHITs over and over, Amazon can tell us when a hit is reviewable. They offer several transports for this notification. The simplest is for Amazon to send an email, but that's not much fun from a programming point-of-view. The simplest, programmatically, is for Amazon to reach back to your app by creating an HTTP request to some URL that accepts the notification data as key-value pairs (read: REST).
+
+h2. Boto
+
+It wasn't until I started implementing my own Python module that I searched Amazon's user forums for "python". I had previously been searching Google for "python mturk". This search, however, lead me to <a href="http://code.google.com/p/boto/">boto</a>. Boto is a Python interface to ALL of Amazon's web services, including Mechanical Turk! AND, fascinatingly, the module's documentation is hosted on amazonaws.com. 
+
+So, Amazon is willing to host the documentation for this module but they're not willing to mention it anywhere... What the heck?!
+
+I was extremely relieved to come across this module now that I understood how much work is involved with interacting with the API. The module comes <a href="http://boto.s3.amazonaws.com/ref/mturk.html">documented at the API level</a> but there is little information about how to actually use the module. For example, to create a HIT, you must first create a QuestionContent. Then you create an Answer input field, such as a FreeTextAnswer, and stuff that inside an AnswerSpecification. Then you put the QuestionContent and AnswerSpecification inside a Question, which you put in a list of questions which you put in a QuestionForm which you then pass as the question argument (not questionform) to the create_hit function. Aye yai yai!
+
+Chris and I have been discussing MTurk for a little while with the goal of matching his previous work on MTurk, but sourced from the data in wikitrans. First thing on my list was creating a list of text inputs with Urdu text accompanying them so one could translate the Urdu into English. This was easy enough. I simply created a list of questions that had Urdu text and a FreeTextAnswer as the input. From this I got a list of questions as I expected but I realized I didn't have the header information including the instructions for the HIT. 
+
+After going through boto I couldn't find anything for putting this information in. I tried simply putting it in the question but then it rejected the HTML formatting. Ah ha! There is a formattedcontent field in the QuestionContent class. So I tried that and found that boto actually prints formatted content <i>after</i> the question text. That seemed strange, but I figured I'd move on and try something new. I tried setting up a question with no answer field but amazon didn't like that.
+
+I started searching around for any help that might exist with mturk and boto when I came across <a href="http://code.google.com/p/boto/issues/detail?id=279#c0">this email</a> from the one and only Aaron Swartz. On Oct. 10th of this year Aaron wrote <i>The create_hit code in boto's mturk module seems to be looking for the completely wrong elements. I don't see how it could ever have worked...</i> This tells me two things. 1) The codebase is really new and not tested and 2) I can't be sure the current codebase is even a complete implementation of Mechanical Turk.
+
+So I went back to the documentation to look for clues. I found the Overview tag. This tag is basically a freeform way of including data at the top of a HIT. PERFECT! I have submitted a patch for boto to implement Overview support according to the docs. It is currently <a href="http://code.google.com/p/boto/issues/detail?id=298">issue 298</a> on the issues list and I hope it gets accepted soon. While reading the docs I found that the formatted content ordering I mentioned two paragraphs above is actually incorrect too, so I also patched that. <i>That</i> patch is <a href="http://code.google.com/p/boto/issues/detail?id=299">issue 299</a>.
+
+After getting the overview tag to work Chris pointed out that the Urdu text was aligned to the left. The characters themselves appeared to be arranged right-to-left, but the sentence was all the way on the left. Drat. Fortunately, along with some trial and error, I discovered I could create an html table with a single row and single data cell of width "538" and aligned to the right and get the HIT to look quite good!
+
+Here is a screenshot:
+
+<a href="/images/2009-11-25-first-thoughts-mturk-api/mturk-template.png"><img src="/images/2009-11-25-first-thoughts-mturk-api/shrunk/mturk-template.png"></a>
+
+h2. Conclusion
+
+As you might guess, it's been two steps forward, one step backward while working with MTurk but I think I'm in the final stretch for getting this up and getting a lot of data rolling in. I hope to have a proof of concept up before end of tomorrow. If so, I'll surely post a link.
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
