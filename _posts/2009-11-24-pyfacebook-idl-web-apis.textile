@@ -1,0 +1,60 @@
+---
+layout: post
+title: Pyfacebook, IDL's and web API's...
+---
+
+h1. {{ page.title }}
+
+p(meta). 24 November 2009 - James - Brooklyn
+
+h2. Some basics on web API's
+
+I have worked with many web API's and have had some wonderful experiences and also some terrible ones. The good ones are usually as simple as going to a URL and then using Python's <a href="http://undefined.org/python/#simplejson">simplejson</a> to parse the output into a data structure.
+
+<script src="http://gist.github.com/242454.js?file=Json+is+easy%21"></script>
+
+The code above shows my latest tweet telling people to check out my friend's band, Helen Earth Band. As you can see, it was easy enough to get some data from twitter in an easy to use structure.
+
+<a href="http://apiwiki.twitter.com/Twitter-Search-API-Method%3A-search">Twitter's search API</a> is fairly straight forward but demonstrates a few of the common themes found in a web API. The function and data format are both components of the URL: http://search.twitter.com/*search*.*json*?q=j2labs&rpp=1. If I wanted to check twitter's trends and get XML I would search my query to http://search.twitter.com/trends.xml.
+
+As you might guess, implementing a web API primarily consists of creating ways to pass arguments to URL's. There is sometimes some session oriented stuff and complexity in handling files, but that's beyond the scope of this post. For API's which are in beta (eg. most of them...) you may have to deal with changing behavior over time. Wikipedia's API, for example, is currently in beta. So is Mechanical Turk's, which I'll be writing about after I finish this post.
+
+h2. Minimal API implementations
+
+There are some API implementations that exist almost entirely as a way to pass a function name, format and arguments to a URL. Amazon's <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=446"><i>official</i> Python implementation for Mechanical Turk</a> is like this. It creates a fast way of providing access to systems but carries no information about what the API does. It also offers no error checking. It simply passes your arguments along to a URL and returns the result.
+
+A typical funciton call of this type looks something like this.
+
+<script src="http://gist.github.com/242474.js?file=gistfile1.py"></script>
+
+Personally, I prefer having some notion of what the URL's behave like in my code. This lets me check arguments before I send them, etc. But it's hard to deny how fast an API is <i>implemented</i> using the minimal method.
+
+h2. Pyfacebook
+
+The <a href="http://github.com/sciyoshi/pyfacebook">pyfacebook</a> module by <a href="http://sciyoshi.com/">Samuel Cormier-Iijima</a> (and many others) is awesome. They use an <a href="http://en.wikipedia.org/wiki/Interface_description_language">IDL</a> to describe the interface and then dynamically generate some objects (proxy's) encapsulating the behavior found in the language. These objects are then expanded upon to add extra funcitonality like handling file uploads or controlling session related stuff. This technique is often found in RPC to leverage it's ability to open up system communication to an abstract and easily adapted interface. Basically, the systems agree to some function names having certain types of arguments and the rest is just communicating the values across the wire.
+
+If you check the <a href="http://github.com/sciyoshi/pyfacebook/blob/master/facebook/__init__.py">pyfacebook code itself</a>, you'll see the IDL start with the declaration of METHODS (line 116 at the time of this writing). We see a dictionary of dictionary's. The outermost dictionary's represent a namespace, like photos-related functions or admin-related functions. The next layer of dictionary's, inside a namespace, represent the functions offered by that namespace and inside each of those is a list of tuple's representing the argument list.
+
+The tuple's consist of the argument name, the type, and any flags for describing the variable. It's common to see ('pid', int, []) or ('page_ids','list',['optional']). This entire list is iterated upon in __generate_proxies() where the transformation from IDL to actual functions takes place. This function reads the language definition and generates Python code from the list contents, calls eval() on the code and instantiates the objects from the generated code. Dynamic languages for the win!
+
+The actual generated code looks something like what's below. Notice that every function essentially returns their name and a dictionary of arguments that have been processed. Something neat about this code is that it actually generates documentation for all the IDL's objects too but the documentation simply directs the programmer to Facebook's documentation.
+
+<script src="http://gist.github.com/242480.js?file=gistfile1.py"></script>
+
+Python offers programmers the chance to implement a function (<a href="http://docs.python.org/reference/datamodel.html#object.__call__">__call__()</a>) which gets called when the object itself is called as a function. If you look at the definition of the Proxy class you see an <code class="prettyprint">__init__()</code> function and the <code class="prettyprint">__call__()</code> function. For those who don't know Python, __init__ is the closest thing you have to a constructor. The proxy is instantiated such that it points to a <code class="prettyprint">_client</code> object and this object is an instance of the <code class="prettyprint">Facebook</code> class. <code class="prettyprint">__call__()</code> calls <code class="prettyprint">_clent</code> as a function with some arguments, one is the remote method we're calling. The Facebook class is defined lower than the IDL and lower than the proxy objects. It consists mainly of some communication and session oriented functions. When the Facebook class is called as a function (first the proxy, then the facebook class) we see Facebook's <code class="prettyprint">__call__()</code> turn the arguments into post variables and query the API's URL for an answer. The facebook URL itself is <a href="http://api.facebook.com/restserver.php">http://api.facebook.com/restserver.php</a> and the method we're calling is one of the POST arguments ('method', specifically).
+
+The IDL functions default to basically being a list of arguments with certain types mapped to certain functions, but sometimes more code is needed than simply sending some data to a URL. Pyfacebook stores session data that comes back from some authentication based calls, as is done in AuthProxy. Another example is how PhotosProxy has an upload function defined which handles encoding the binary data for transmission. The proxy objects are first generated dynamically according to the IDL's first layer of dictionary keys (eg. 'photos'). Then the proxy object is created with the name PhotosProxy and added to the global namespace. If there are overrides you see a redeclaration of the object and it inherits from (itself?!) an object of the same name. I really dig this logic as it shows how you can use an IDL to make assumptions about typical behavior and then override the atypical cases with ease.
+
+The Facebook class itself is largely of just an auth implementation which includes session handling for the user.
+
+h2. Conclusion
+
+Let's say Facebook changed their API, in Samuel's implementation I likely just modify the IDL, reload the module and keep working. This is wonderful! I get actual funcitons and speedy maintenance in one.
+
+This rather long blog post almost certainly brings up the question of "how long does it take to implement for a new API". For some work outside wikitrans I had to implement a python module for handling <a href="http://www.eventbrite.com">EventBrite's API</a>. That module is the barebones for getting information about an event and then listing the attendees. You can see it <a href="http://github.com/j2labs/pyventbrite/blob/master/pyventbrite/__init__.py">here</a>.
+
+This module is as barebones as I could make it. To extend it to include the other functions in Event Brite's API one would just have to extend the METHODS declaration. To port it to a new API is a little more complicated, but the gist of it is to modify the URL related code. That's about it!
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
