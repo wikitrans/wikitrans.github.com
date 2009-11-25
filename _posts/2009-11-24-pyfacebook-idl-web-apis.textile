@@ -13,7 +13,7 @@ I have worked with many web API's and have had some wonderful experiences and al
 
 <script src="http://gist.github.com/242454.js?file=Json+is+easy%21"></script>
 
-The code above shows my latest tweet telling people to check out my friend's band, Helen Earth Band. As you can see, it was easy enough to get some data from twitter in an easy to use structure.
+The code above shows my latest tweet telling people to check out my friend's band, <a href="http://helenearthband.bandcamp.com/">Helen Earth Band</a>. As you can see, it was easy enough to get some data from twitter in an easy to use structure.
 
 <a href="http://apiwiki.twitter.com/Twitter-Search-API-Method%3A-search">Twitter's search API</a> is fairly straight forward but demonstrates a few of the common themes found in a web API. The function and data format are both components of the URL: http://search.twitter.com/*search*.*json*?q=j2labs&rpp=1. If I wanted to check twitter's trends and get XML I would search my query to http://search.twitter.com/trends.xml.
 
