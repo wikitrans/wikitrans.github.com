@@ -54,17 +54,21 @@ I was extremely relieved to come across this module now that I understood how mu
 
 Chris and I have been discussing MTurk for a little while with the goal of matching his previous work on MTurk, but sourced from the data in wikitrans. First thing on my list was creating a list of text inputs with Urdu text accompanying them so one could translate the Urdu into English. This was easy enough. I simply created a list of questions that had Urdu text and a FreeTextAnswer as the input. From this I got a list of questions as I expected but I realized I didn't have the header information including the instructions for the HIT. 
 
-After going through boto I couldn't find anything for putting this information in. I tried simply putting it in the question but then it rejected the HTML formatting. Ah ha! There is a formattedcontent field in the QuestionContent class. So I tried that and found that boto actually prints formatted content <i>after</i> the question text. That seemed strange, but I figured I'd move on and try something new. I tried setting up a question with no answer field but amazon didn't like that.
+After going through boto I couldn't find anything for putting this information in. I tried simply putting it in the question but then it rejected the HTML formatting. Ah ha! There is a formattedcontent field in the QuestionContent class. So I tried that and found that boto actually prints formatted content <i>after</i> the question text. That seemed strange, but I figured I'd move on and try something new. I tried setting up a Question that consisted of only the formatted content, to hold the header info, but amazon didn't like that.
 
 I started searching around for any help that might exist with mturk and boto when I came across <a href="http://code.google.com/p/boto/issues/detail?id=279#c0">this email</a> from the one and only Aaron Swartz. On Oct. 10th of this year Aaron wrote <i>The create_hit code in boto's mturk module seems to be looking for the completely wrong elements. I don't see how it could ever have worked...</i> This tells me two things. 1) The codebase is really new and not tested and 2) I can't be sure the current codebase is even a complete implementation of Mechanical Turk.
 
-So I went back to the documentation to look for clues. I found the Overview tag. This tag is basically a freeform way of including data at the top of a HIT. PERFECT! I have submitted a patch for boto to implement Overview support according to the docs. It is currently <a href="http://code.google.com/p/boto/issues/detail?id=298">issue 298</a> on the issues list and I hope it gets accepted soon. While reading the docs I found that the formatted content ordering I mentioned two paragraphs above is actually incorrect too, so I also patched that. <i>That</i> patch is <a href="http://code.google.com/p/boto/issues/detail?id=299">issue 299</a>.
+So I went back to the documentation to look for clues. I found the Overview tag. This tag is basically a freeform way of including data at the top of a HIT. PERFECT! I have submitted a patch for boto to implement Overview support as described by the docs. It is currently <a href="http://code.google.com/p/boto/issues/detail?id=298">issue 298</a> on the issues list and I hope it gets accepted soon. While reading the docs I found that the formatted content ordering I mentioned two paragraphs above is actually incorrect too, so I also patched that. <i>That</i> patch is <a href="http://code.google.com/p/boto/issues/detail?id=299">issue 299</a>.
 
 After getting the overview tag to work Chris pointed out that the Urdu text was aligned to the left. The characters themselves appeared to be arranged right-to-left, but the sentence was all the way on the left. Drat. Fortunately, along with some trial and error, I discovered I could create an html table with a single row and single data cell of width "538" and aligned to the right and get the HIT to look quite good!
 
 Here is a screenshot:
 
 <a href="/images/2009-11-25-first-thoughts-mturk-api/mturk-template.png"><img src="/images/2009-11-25-first-thoughts-mturk-api/shrunk/mturk-template.png"></a>
+
+And here is what that looks like in code:
+
+<script src="http://gist.github.com/242603.js?file=gistfile1.py"></script>
 
 h2. Conclusion
 
