@@ -46,7 +46,7 @@ Instead of calling GetReviewableHITs over and over, Amazon can tell us when a hi
 
 h2. Boto
 
-It wasn't until I started implementing my own Python module that I searched Amazon's user forums for "python". I had previously been searching Google for "python mturk". This search, however, lead me to <a href="http://code.google.com/p/boto/">boto</a>. Boto is a Python interface to ALL of Amazon's web services, including Mechanical Turk! AND, fascinatingly, the module's documentation is hosted on amazonaws.com. 
+It wasn't until I started implementing my own Python module that I searched Amazon's user forums for "python". I had previously been searching Google for "python mturk". This search through the forums, however, lead me to <a href="http://code.google.com/p/boto/">boto</a>. Boto is a Python interface to ALL of Amazon's web services, including Mechanical Turk! AND, fascinatingly, the module's documentation is hosted on amazonaws.com. 
 
 So, Amazon is willing to host the documentation for this module but they're not willing to mention it anywhere... What the heck?!
 
