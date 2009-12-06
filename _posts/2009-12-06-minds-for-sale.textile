@@ -7,7 +7,7 @@ h1. {{ page.title }}
 
 p(meta). 06 December 2009 - James - Brooklyn
 
-This video was brought to my attention by a high school friend, <a href="http://fredbenenson.com/blog/">Fred Benenson</a>. Fred works simultaneously for <a href="http://creativecommons.org/tag/fred-benenson">Creative Commons</a> and <a href="http://kickstarter.com">Kickstarter</a> and is also the guy behind the <a href="http://www.kickstarter.com/projects/fred/emoji-dick">Emoji Dick Kickstarter project</a> which aims to use Mechanical Turk to translate Moby Dick into Emoji. I like to plug my friends.
+This video was brought to my attention by a high school friend, <a href="http://twitter.com/mecredis">Fred Benenson</a>. Fred works simultaneously for <a href="http://creativecommons.org/tag/fred-benenson">Creative Commons</a> and <a href="http://kickstarter.com">Kickstarter</a> and is also the guy behind the <a href="http://www.kickstarter.com/projects/fred/emoji-dick">Emoji Dick Kickstarter project</a> which aims to use Mechanical Turk to translate Moby Dick into Emoji. I like to plug my friends.
 
 Anyway, here is the video he shared. Some of my thoughts are below.
 
