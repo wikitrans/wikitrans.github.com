@@ -41,7 +41,7 @@ On top of that, there is a question regarding the digitization of mechanisms tha
 
 Towards the end, John drops a bombshell idea. He says he wouldn't mind having younger children spending time communicating about data on wikipedia but isn't sure how he'd feel about farming out tasks that children can use to earn money for the school. I agree that these are different. Letting a school turn it's children into workers <b>is</b> the same as creating a child labor market. There are hard questions about how to filter, but we shouldn't let it deter us from trying.
 
-Where do <code>world.all_people()</code> want to go today? 
+Where do <code>world.all_people()</code> want to go tomorrow? 
 --
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
