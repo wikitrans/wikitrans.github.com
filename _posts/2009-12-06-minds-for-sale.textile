@@ -27,7 +27,7 @@ It seems like the worst example of using Mechanical Turk purely for it's do-this
 
 John's objections to ignorance are interesting to me. They come across, in ways, as being a bit more paranoid than I am. I'm not too concerned by the tasking because I believe a spam handling approach can generally solve the issues. At the very least, you can reduce the markets in such a way that it's very difficult to get these kinds of tasks out. Filter the list of tasks. Some will slide through, so a flagging system would also have to exist enabling users to police the system too. 
 
-<a href="http://www.openmind.org">Openmind</a> was brought up. I hadn't seen Open Mind until just now and am amazed to see it is a Django site much like the Wikitrans system I'm building. It also uses <a href="http://djangoproject.com">Django</a> and <a href="http://pinaxproject.com">Pinax</a> for the foundation. Good choice!
+<a href="http://www.openmind.org">Open Mind</a> was brought up. I hadn't seen Open Mind until just now and am amazed to see it is a Django site much like the Wikitrans system I'm building. It also uses <a href="http://djangoproject.com">Django</a> and <a href="http://pinaxproject.com">Pinax</a> for the foundation. Good choice!
 
 Open Mind is a system from MIT for interacting with Mechanical Turk for farming out tasks that are useful for researching patterns. My new friends at University of Maryland introduced this to us. Instead of actually checking out the website, I went to the code to see how they were interacting with Mechanical Turk. I didn't think it could have been <a href="http://code.google.com/p/boto/">boto</a>, because that funcitonality wasn't working properly for a while. 
 
