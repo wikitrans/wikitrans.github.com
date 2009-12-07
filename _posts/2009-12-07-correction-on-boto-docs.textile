@@ -7,7 +7,7 @@ h1. {{ page.title }}
 
 p(meta). 08 December 2009 - James - Brooklyn
 
-In a <a href="">previous post</a> I said, <i>"So, Amazon is willing to host the documentation for this module but they’re not willing to mention it anywhere… What the heck?!"</i>. This is actually a mistake. Thanks to <a href="http://twitter.com/peteskomoroch">Peter Skomoroch</a> for pointing out that the documentation is hosted on Amazon Web Service, which is not the same as Amazon intentionally hosting something. It's possible they don't even know it's there.
+In a <a href="">previous post</a> I said, <i>"So, Amazon is willing to host the documentation for this module but they’re not willing to mention it anywhere… What the heck?!"</i>. This is actually a mistake. Thanks to <a href="http://twitter.com/peteskomoroch">Peter Skomoroch</a> for pointing out that the documentation is hosted on Amazon's S3 service, which is not the same as Amazon intentionally hosting something. It's possible they don't even know it's there.
 
 --
 
