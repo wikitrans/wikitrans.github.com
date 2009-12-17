@@ -42,13 +42,13 @@ Here is what that code looks like, but first: The Urdu text looks like it's goin
 
 <script src="http://gist.github.com/258902.js?file=gistfile1.py"></script>
 
-So now let's compare.
+So now let's compare. We'll use a string from <a href="http://ur.wikipedia.org/wiki/اردو">http://ur.wikipedia.org/wiki/اردو</a>.
 
-Firefox :: <a href="/images/2009-12-16-pyango-view/firefox-wikipedia.png"><img src="/images/2009-12-16-pyango-view/shrunk/firefox-wikipedia.png"></a>
+Firefox shows it like this<br><a href="/images/2009-12-16-pyango-view/firefox-wikipedia.png"><img src="/images/2009-12-16-pyango-view/shrunk/firefox-wikipedia.png"></a>
 
-Linear B :: <a href="/images/2009-12-16-pyango-view/linearb.jpg"><img src="/images/2009-12-16-pyango-view/shrunk/linearb.jpg"></a>
+Linear B renders this<br><a href="/images/2009-12-16-pyango-view/linearb.jpg"><img src="/images/2009-12-16-pyango-view/shrunk/linearb.jpg"></a>
 
-PIL-rtlize :: <a href="/images/2009-12-16-pyango-view/pil.png"><img src="/images/2009-12-16-pyango-view/shrunk/pil.png"></a>
+PIL combined with rtlize renders this<br><a href="/images/2009-12-16-pyango-view/pil.png"><img src="/images/2009-12-16-pyango-view/shrunk/pil.png"></a>
 
 First mistake I noticed was a dot under the last character, when reading right-to-left, in the Linear B version. That looks like below.
 
