@@ -15,6 +15,7 @@ This post is split into two sections. The first is the story of trying to get Ur
 * <a href="#pyango_view">Pyango View</a>
 
 <a name="thestory"></a>
+
 h2. The Story
 
 p(meta). Imagemagick and PIL
@@ -27,7 +28,7 @@ Both Imagemagick and PIL are fairly simple image tools. Neither handle text that
 
 Dang. Neither PIL nor Imagemagick could do this properly.
 
-p(meta). Imagemagick and PIL
+p(meta). Linear B and PIL+arabic_rtlize
 
 Chris suggested I try <a href="http://linearb.co.uk/">Linear B's</a> rendering, which means I go out to Java. I'm just looking for a solution so I'm quite happy to use this if it works.
 
@@ -63,7 +64,7 @@ I started to dig in to Linear B to see what kind of options I'd have regarding f
 
 Something to consider, there is context in how letters are spaced that is brought up under certain conditions that don't exist in the bytes representing the graphic. This is a strange concept for me because I prefer unabiguous maps from letter graphic to byte. Handling this context is precisely what Hasan's tool does for Arabic. It's just incomplete for Urdu.
 
-h2. Pango View
+p(meta). Pango View
 
 After reaching this point, I heard from Hasan again. He suggested I try Pango View. 
 
@@ -76,6 +77,7 @@ We have heard that the pango view version is by far the best. Nicer on the eye a
 We have a solution!
 
 <a name="pyango_view"></a>
+
 h2. Pyango View
 
 Pyango View is a python library that takes the basics of how we use pango-view and turns it into a library.
