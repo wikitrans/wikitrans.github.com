@@ -32,7 +32,7 @@ p(meta). Linear B and PIL+arabic_rtlize
 
 Chris suggested I try <a href="http://linearb.co.uk/">Linear B's</a> rendering, which means I go out to Java. I'm just looking for a solution so I'm quite happy to use this if it works.
 
-While Chris was generating some text images, I was googling for methods of staying inside Python when I came across <a href="http://github.com/hasenj/">Hasan's</a> <a href="http://github.com/hasenj/arabic-writer">arabic-writer</a>. Arabic-writer is a tool for taking Arabic text that needs to be right-to-left but is displaying left-to-right. I need this to work for Urdu, but I suspect this will get me fairly close. Interestingly, I've discovered that Arabic fonts also do not cover all Urdu letters. Underneath the hood, in terms of how fonts are stored, Arabic and Urdu are significantly different.
+While Chris was generating some text images, I was googling for methods of staying inside Python when I came across <a href="http://github.com/hasenj/">Hasan's</a> <a href="http://github.com/hasenj/arabic-writer">arabic-writer</a>. Arabic-writer is a tool for converting Arabic text that needs to be right-to-left but is being displayed in a tool that only understands left-to-right. I need this to work for Urdu, but I suspect this will get me fairly close. Interestingly, I've discovered that Arabic fonts also do not cover all Urdu letters. Underneath the hood, in terms of how fonts are stored, Arabic and Urdu are significantly different.
 
 I wrote to Hasan to let him know I planned to convert his tool into a library for my purposes and have released that as <a href="http://github.com/j2labs/arabic_rtlize">arabic_rtlize</a> with some of the GUI tools Hasan wrote stripped out. It's just a library, instead of an application.
 
