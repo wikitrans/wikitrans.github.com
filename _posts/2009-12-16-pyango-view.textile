@@ -18,6 +18,8 @@ This post is split into two sections. The first is the story of trying to get Ur
 
 h2. The Story
 
+Omar Zaiden and Chris (CCB) both had the idea to deter cheating in human aided translational tools by not using actual text. Instead, print the text into an image, similar to how a captcha uses images of text as a are-you-human test. Cheaters, often times, will cut n paste the text into translation tools to do the job without being able to actually speak the language correctly. This is made harder by not letting one cut n paste the text.
+
 p(meta). Imagemagick and PIL
 
 Both Imagemagick and PIL are fairly simple image tools. Neither handle text that goes from right-to-left. It's possible to send Urdu characters into both, but the letters are shown backwards. Text is really just a line of bits and then some context about the letters determines whether or not it's written from left-to-right or right-to-left. 
