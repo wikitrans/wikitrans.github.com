@@ -57,9 +57,9 @@ Linear B has a dot<br><a href="/images/2009-12-16-pyango-view/dot-linearb.png"><
 
 Second mistake I noticed, and intuitively thought this one seemed more troublesome, was a lot of spacing between letters in the sixth word from the right of the sentence in PIL. Linear B appeared to handle the word just fine.
 
-PIL-rtlize has spaced characters<br><a href="/images/2009-12-16-pyango-view/dot-pil.png"><img src="/images/2009-12-16-pyango-view/spacing-pil.png"></a>
+PIL-rtlize has spaced characters<br><a href="/images/2009-12-16-pyango-view/spacing-pil.png"><img src="/images/2009-12-16-pyango-view/spacing-pil.png"></a>
 
-Linear B has correctly joined letters<br><a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/spacing-linearb.png"></a>
+Linear B has correctly joined letters<br><a href="/images/2009-12-16-pyango-view/spacing-linearb.png"><img src="/images/2009-12-16-pyango-view/spacing-linearb.png"></a>
 
 I started to dig in to Linear B to see what kind of options I'd have regarding fonts. That dot, mentioned as the first mistake above, could just be like a font. I wondered if this was a mark similar to when people cross upper case J's or don't. The idea of fonts in arabic was not something I had considered until I saw the differences in rendering. And I believe the spacing issue that PIL-rtlize has would be referred to as <i>kerning</i> by Typographers, but it appears the letters change shape subtly to enhance their adaptiveness to the adjacent letter. Consider the heavy upward swoosh in the <a href="/images/2009-12-16-pyango-view/dot-linearb.png">PIL-rtlize image</a> directly above. It's not present in the <a href="/images/2009-12-16-pyango-view/dot-linearb.png">Linear B</a> alternative.
 
@@ -71,7 +71,7 @@ After reaching this point, I heard from Hasan again. He suggested I try Pango Vi
 
 Here is the text as rendered by pango-view.
 
-<a href="/images/2009-11-10-before-and-after-mturk/pango-view.png"><img src="/images/2009-11-10-before-and-after-mturk/shrunk/pango-view.png" /></a>
+<a href="/images/2009-12-16-pyango-view/pango-view.png"><img src="/images/2009-12-16-pyango-view/shrunk/pango-view.png" /></a>
 
 We have heard that the pango view version is by far the best. Nicer on the eye and smoother.
 
