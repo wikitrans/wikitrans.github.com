@@ -14,7 +14,8 @@ This post is split into two sections. The first is the story of trying to get Ur
 * <a href="#thestory">The Story</a>
 * <a href="#pyango_view">Pyango View</a>
 
-h2. <a name="thestory">The Story</a>
+<a name="thestory"></a>
+h2. The Story
 
 p(meta). Imagemagick and PIL
 
@@ -68,13 +69,14 @@ After reaching this point, I heard from Hasan again. He suggested I try Pango Vi
 
 Here is the text as rendered by pango-view.
 
-<a href="/images/2009-11-10-before-and-after-mturk/pango-view.jpg"><img src="/images/2009-11-10-before-and-after-mturk/shrunk/pango-view.jpg" /></a>
+<a href="/images/2009-11-10-before-and-after-mturk/pango-view.png"><img src="/images/2009-11-10-before-and-after-mturk/shrunk/pango-view.png" /></a>
 
 We have heard that the pango view version is by far the best. Nicer on the eye and smoother.
 
 We have a solution!
 
-h2. <a name="pyango_view">Pyango View</a>
+<a name="pyango_view"></a>
+h2. Pyango View
 
 Pyango View is a python library that takes the basics of how we use pango-view and turns it into a library.
 
