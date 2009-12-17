@@ -22,8 +22,7 @@ p(meta). Imagemagick and PIL
 
 Both Imagemagick and PIL are fairly simple image tools. Neither handle text that goes from right-to-left. It's possible to send Urdu characters into both, but the letters are shown backwards. Text is really just a line of bits and then some context about the letters determines whether or not it's written from left-to-right or right-to-left. 
 
-Click to see a larger form.
-
+<i>(click for larger)</i><br>
 <a href="/images/2009-12-16-pyango-view/imagemagick.gif"><img src="/images/2009-12-16-pyango-view/shrunk/imagemagick.gif"></a>
 
 <script src="http://gist.github.com/258967.js?file=gistfile1.sh"></script>
@@ -44,7 +43,7 @@ Here is what that code looks like, but first: The Urdu text looks like it's goin
 
 So now let's compare. We'll use a string from <a href="http://ur.wikipedia.org/wiki/اردو">http://ur.wikipedia.org/wiki/اردو</a>.
 
-Firefox shows it like this<br><a href="/images/2009-12-16-pyango-view/firefox-wikipedia.png"><img src="/images/2009-12-16-pyango-view/shrunk/firefox-wikipedia.png"></a>
+Firefox shows it like this <i>(click for larger)</i><br><a href="/images/2009-12-16-pyango-view/firefox-wikipedia.png"><img src="/images/2009-12-16-pyango-view/shrunk/firefox-wikipedia.png"></a>
 
 Linear B renders this<br><a href="/images/2009-12-16-pyango-view/linearb.jpg"><img src="/images/2009-12-16-pyango-view/shrunk/linearb.jpg"></a>
 
@@ -52,15 +51,15 @@ PIL combined with rtlize renders this<br><a href="/images/2009-12-16-pyango-view
 
 First mistake I noticed was a dot under the last character, when reading right-to-left, in the Linear B version. That looks like below.
 
-PIL-rtlize :: <a href="/images/2009-12-16-pyango-view/dot-pil.png"><img src="/images/2009-12-16-pyango-view/dot-pil.png"></a>
+PIL-rtlize has no dot<br><a href="/images/2009-12-16-pyango-view/dot-pil.png"><img src="/images/2009-12-16-pyango-view/dot-pil.png"></a>
 
-Linear B :: <a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/dot-linearb.png"></a>
+Linear B has a dot<br><a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/dot-linearb.png"></a>
 
 Second mistake I noticed, and intuitively thought this one seemed more troublesome, was a lot of spacing between letters in the sixth word from the right of the sentence in PIL. Linear B appeared to handle the word just fine.
 
-PIL-rtlize :: <a href="/images/2009-12-16-pyango-view/dot-pil.png"><img src="/images/2009-12-16-pyango-view/spacing-pil.png"></a>
+PIL-rtlize has spaced characters<br><a href="/images/2009-12-16-pyango-view/dot-pil.png"><img src="/images/2009-12-16-pyango-view/spacing-pil.png"></a>
 
-Linear B :: <a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/spacing-linearb.png"></a>
+Linear B has correctly joined letters<br><a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/spacing-linearb.png"></a>
 
 I started to dig in to Linear B to see what kind of options I'd have regarding fonts. That dot, mentioned as the first mistake above, could just be like a font. I wondered if this was a mark similar to when people cross upper case J's or don't. The idea of fonts in arabic was not something I had considered until I saw the differences in rendering. And I believe the spacing issue that PIL-rtlize has would be referred to as <i>kerning</i> by Typographers, but it appears the letters change shape subtly to enhance their adaptiveness to the adjacent letter. Consider the heavy upward swoosh in the <a href="/images/2009-12-16-pyango-view/dot-linearb.png">PIL-rtlize image</a> directly above. It's not present in the <a href="/images/2009-12-16-pyango-view/dot-linearb.png">Linear B</a> alternative.
 
