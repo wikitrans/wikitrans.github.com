@@ -22,10 +22,9 @@ p(meta). Imagemagick and PIL
 
 Both Imagemagick and PIL are fairly simple image tools. Neither handle text that goes from right-to-left. It's possible to send Urdu characters into both, but the letters are shown backwards. Text is really just a line of bits and then some context about the letters determines whether or not it's written from left-to-right or right-to-left. 
 
-<i>(click for larger)</i><br>
-<a href="/images/2009-12-16-pyango-view/imagemagick.gif"><img src="/images/2009-12-16-pyango-view/shrunk/imagemagick.gif"></a>
-
 <script src="http://gist.github.com/258967.js?file=gistfile1.sh"></script>
+
+<a href="/images/2009-12-16-pyango-view/imagemagick.gif"><img src="/images/2009-12-16-pyango-view/shrunk/imagemagick.gif"></a><br><i>(click for larger)</i>
 
 Dang. Neither PIL nor Imagemagick could do this properly.
 
