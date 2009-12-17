@@ -1,0 +1,85 @@
+---
+layout: post
+title: Pyango View
+---
+
+h1. {{ page.title }}
+
+p(meta). 16 December 2009 - James - Brooklyn
+
+h2. Two Sections
+
+This post is split into two sections. The first is the story of trying to get Urdu text to print properly in an image and what I learned. The second is the tool I now use to print Urdu text in images with good accuracy. Perfect, according to at least one native speaker!
+
+* <a href="#thestory">The Story</a>
+* <a href="#pyango_view">Pyango View</a>
+
+h2. <a name="thestory">The Story</a>
+
+p(meta). Imagemagick and PIL
+
+Both Imagemagick and PIL are fairly simple image tools. Neither handle text that goes from right-to-left. It's possible to send Urdu characters into both, but the letters are shown backwards. Text is really just a line of bits and then some context about the letters determines whether or not it's written from left-to-right or right-to-left. 
+
+<a href="/images/2009-12-16-pyango-view/imagemagick.gif"><img src="/images/2009-12-16-pyango-view/shrunk/imagemagick.gif"></a>
+
+<script src="http://gist.github.com/258967.js?file=gistfile1.sh"></script>
+
+Dang. Neither PIL nor Imagemagick could do this properly.
+
+p(meta). Imagemagick and PIL
+
+Chris suggested I try <a href="http://linearb.co.uk/">Linear B's</a> rendering, which means I go out to Java. I'm just looking for a solution so I'm quite happy to use this if it works.
+
+While Chris was generating some text images, I was googling for methods of staying inside Python when I came across <a href="http://github.com/hasenj/">Hasan's</a> <a href="http://github.com/hasenj/arabic-writer">arabic-writer</a>. Arabic-writer is a tool for taking Arabic text that needs to be right-to-left but is displaying left-to-right. I need this to work for Urdu, but I suspect this will get me fairly close. Interestingly, I've discovered that Arabic fonts also do not cover all Urdu letters. Underneath the hood, in terms of how fonts are stored, Arabic and Urdu are significantly different.
+
+I wrote to Hasan to let him know I planned to convert his tool into a library for my purposes and have released that as <a href="http://github.com/j2labs/arabic_rtlize">arabic_rtlize</a> with some of the GUI tools Hasan wrote stripped out. It's just a library, instead of an application.
+
+Here is what that code looks like, but first: The Urdu text looks like it's going from right-to-left, doesn't it? You can tell by seeing the terminator (eg. period) on the left instead of the right. But don't be fooled, your computer is playing tricks on you by displaying it right-to-left even though it's left-to-right in the code. Tricksy hobbits's!
+
+<script src="http://gist.github.com/258902.js?file=gistfile1.py"></script>
+
+So now let's compare.
+
+Firefox :: <a href="/images/2009-12-16-pyango-view/firefox-wikipedia.png"><img src="/images/2009-12-16-pyango-view/shrunk/firefox-wikipedia.png"></a>
+
+Linear B :: <a href="/images/2009-12-16-pyango-view/linearb.jpg"><img src="/images/2009-12-16-pyango-view/shrunk/linearb.jpg"></a>
+
+PIL-rtlize :: <a href="/images/2009-12-16-pyango-view/pil.png"><img src="/images/2009-12-16-pyango-view/shrunk/pil.png"></a>
+
+First mistake I noticed was a dot under the last character, when reading right-to-left, in the Linear B version. That looks like below.
+
+PIL-rtlize :: <a href="/images/2009-12-16-pyango-view/dot-pil.png"><img src="/images/2009-12-16-pyango-view/dot-pil.png"></a>
+
+Linear B :: <a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/dot-linearb.png"></a>
+
+Second mistake I noticed, and intuitively thought this one seemed more troublesome, was a lot of spacing between letters in the sixth word from the right of the sentence in PIL. Linear B appeared to handle the word just fine.
+
+PIL-rtlize :: <a href="/images/2009-12-16-pyango-view/dot-pil.png"><img src="/images/2009-12-16-pyango-view/spacing-pil.png"></a>
+
+Linear B :: <a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/spacing-linearb.png"></a>
+
+I started to dig in to Linear B to see what kind of options I'd have regarding fonts. That dot, mentioned as the first mistake above, could just be like a font. I wondered if this was a mark similar to when people cross upper case J's or don't. The idea of fonts in arabic was not something I had considered until I saw the differences in rendering. And I believe the spacing issue that PIL-rtlize has would be referred to as <i>kerning</i> by Typographers, but it appears the letters change shape subtly to enhance their adaptiveness to the adjacent letter. Consider the heavy upward swoosh in the <a href="/images/2009-12-16-pyango-view/dot-linearb.png">PIL-rtlize image</a> directly above. It's not present in the <a href="/images/2009-12-16-pyango-view/dot-linearb.png">Linear B</a> alternative.
+
+Something to consider, there is context in how letters are spaced that is brought up under certain conditions that don't exist in the bytes representing the graphic. This is a strange concept for me because I prefer unabiguous maps from letter graphic to byte. Handling this context is precisely what Hasan's tool does for Arabic. It's just incomplete for Urdu.
+
+h2. Pango View
+
+After reaching this point, I heard from Hasan again. He suggested I try Pango View. 
+
+Here is the text as rendered by pango-view.
+
+<a href="/images/2009-11-10-before-and-after-mturk/pango-view.jpg"><img src="/images/2009-11-10-before-and-after-mturk/shrunk/pango-view.jpg" /></a>
+
+We have heard that the pango view version is by far the best. Nicer on the eye and smoother.
+
+We have a solution!
+
+h2. <a name="pyango_view">Pyango View</a>
+
+Pyango View is a python library that takes the basics of how we use pango-view and turns it into a library.
+
+I will <a href="http://github.com/j2labs/pyango_view/blob/master/README.md">let the documentation</a> for Pyango View speak for itself.
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
