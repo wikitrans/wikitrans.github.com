@@ -42,7 +42,9 @@ Here is what that code looks like, but first: The Urdu text looks like it's goin
 
 <script src="http://gist.github.com/258902.js?file=gistfile1.py"></script>
 
-So now let's compare. We'll use a string from <a href="http://ur.wikipedia.org/wiki/اردو">http://ur.wikipedia.org/wiki/اردو</a>.
+We showed these to Omar and he pointed out that the PIL version appears to have excessive spacing between letters. We only had the PIL copy with us while we were talking, so I went back and compared the two in more detail.
+
+Now, for a test on the same string. We'll use a string from <a href="http://ur.wikipedia.org/wiki/اردو">http://ur.wikipedia.org/wiki/اردو</a>.
 
 Firefox shows it like this <i>(click for larger)</i><br><a href="/images/2009-12-16-pyango-view/firefox-wikipedia.png"><img src="/images/2009-12-16-pyango-view/shrunk/firefox-wikipedia.png"></a>
 
