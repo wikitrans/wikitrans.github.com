@@ -58,7 +58,7 @@ PIL-rtlize has no dot<br><a href="/images/2009-12-16-pyango-view/dot-pil.png"><i
 
 Linear B has a dot<br><a href="/images/2009-12-16-pyango-view/dot-linearb.png"><img src="/images/2009-12-16-pyango-view/dot-linearb.png"></a>
 
-Second mistake I noticed, and intuitively thought this one seemed more troublesome, was a lot of spacing between letters in the sixth word from the right of the sentence in PIL. Linear B appeared to handle the word just fine.
+Second mistake I noticed, and thought this one seemed more troublesome, was a lot of spacing between letters in the sixth word from the right of the sentence in PIL. Linear B appeared to handle the word just fine.
 
 PIL-rtlize has spaced characters<br><a href="/images/2009-12-16-pyango-view/spacing-pil.png"><img src="/images/2009-12-16-pyango-view/spacing-pil.png"></a>
 
