@@ -36,6 +36,9 @@ Peter worked with a team that could detect diseases <i>about a week or two faste
 
 Of Python, Peter says, <i>"It's just a few lines to parse the maze into a set of states and then you set up these three tables of probabailities that the hidden markov model needs. You need a distribution over the start state and I just said that's uniform, you can start anywhere. You need the transitions, which are the observations and I define the observation function as the four walls around it. And so that was very nice that in this half a page of code I was able to go from this model parsing the representation of the room and get it into the form it needed and in other languages that would've been 3 or 4 pages instead of half a page. So that was ideal."</i>
 
+<a href="/images/2009-12-20-peter-norvig-scientific-computing/half_page.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/half_page.png"></a>
+
+
 --
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
