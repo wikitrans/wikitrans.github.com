@@ -1,0 +1,14 @@
+---
+layout: post
+title: Added comments
+---
+
+h1. {{ page.title }}
+
+p(meta). 20 December 2009 - James - Brooklyn
+
+You will now see <a href="http://disqus.com">disqus</a> embedded in each post page. 
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
