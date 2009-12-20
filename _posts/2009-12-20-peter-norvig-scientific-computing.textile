@@ -28,6 +28,9 @@ I'm curious if Peter Norvig has written anything regarding Mechanical Turk. He p
 
 <a href="/images/2009-12-20-peter-norvig-scientific-computing/observe_and_explore.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/observe_and_explore.png"></a>
 
+There seems to be no mention of <i>turk</i> on his <a href="http://norvig.com">web page</a> anywhere...
+
+
 --
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
