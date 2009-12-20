@@ -42,7 +42,11 @@ Peter brings up a slide for Naive Bayes word modeling and mentions using a Pytho
 
 <a href="/images/2009-12-20-peter-norvig-scientific-computing/memoizator.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/memoizator.png"></a>
 
-I found this <a href="http://avinashv.net/2008/04/python-decorators-syntactic-sugar/">blog post</a> compelling for decorators. Memoization is covered.
+I found this <a href="http://avinashv.net/2008/04/python-decorators-syntactic-sugar/">blog post</a> compelling for decorators. Memoization is covered. I have had good success use Django's for requiring authentication properties before like <code>@login_required</code>.
+
+<i>I think the was the appropriate amount of work to get there.</i>
+
+<a href="/images/2009-12-20-peter-norvig-scientific-computing/plot.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/plot.png"></a>
 
 --
 
