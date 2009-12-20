@@ -30,6 +30,10 @@ I'm curious if Peter Norvig has written anything regarding Mechanical Turk. He p
 
 There seems to be no mention of <i>turk</i> on his <a href="http://norvig.com">web page</a> anywhere...
 
+Peter worked with a team that could detect diseases <i>about a week or two faster</i> than other sources at determining how tough the flu season will be.
+
+<a href="/images/2009-12-20-peter-norvig-scientific-computing/detect_flu.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/detect_flu.png"></a>
+
 
 --
 
