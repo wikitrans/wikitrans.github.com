@@ -24,6 +24,10 @@ Those in the upper levels of Academia may appreciate Norvig's humor here. In gre
 
 <a href="/images/2009-12-20-peter-norvig-scientific-computing/what_do_scientists_do.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/what_do_scientists_do.png"></a>
 
+I'm curious if Peter Norvig has written anything regarding Mechanical Turk. He puts a market place for data gathering in his list of methods to Observer and Explore.
+
+<a href="/images/2009-12-20-peter-norvig-scientific-computing/observe_and_explore.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/observe_and_explore.png"></a>
+
 --
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
