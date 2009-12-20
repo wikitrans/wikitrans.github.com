@@ -16,11 +16,13 @@ While speaking, he covers his views on the goals of scientific computing and lis
 <a href="/images/2009-12-20-peter-norvig-scientific-computing/scientific_computing.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/scientific_computing.png"></a>
 
 * Weka - <a href="http://kogs-www.informatik.uni-hamburg.de/~meine/weka-python/">http://kogs-www.informatik.uni-hamburg.de/~meine/weka-python/</a>
-*BNT - Bayes Network Toolkit? (<a href="mailto:jd@j2labs.net?subject=bnt">does anyone know?</a>)
+* BNT - Bayes Network Toolkit? (<a href="mailto:jd@j2labs.net?subject=bnt">does anyone know?</a>)
 * Orange - <a href="http://www.ailab.si/orange/">http://www.ailab.si/orange/</a>
 * PyML - <a href="http://pyml.sourceforge.net/">http://pyml.sourceforge.net/</a>
 
+Those in the upper levels of Academia may appreciate Norvig's humor here. In grey, are the usual things scientists do. Norvig suggests the steps in black were left out by mistake.
 
+<a href="/images/2009-12-20-peter-norvig-scientific-computing/what_do_scientists_do.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/what_do_scientists_do.png"></a>
 
 --
 
