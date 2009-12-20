@@ -13,7 +13,7 @@ Peter Norvig explains why he came to Python. Quite simply, it looked a lot like 
 
 While speaking, he covers his views on the goals of scientific computing and lists a couple software projects under machine learning.
 
-<a href="/images/2009-12-20-peter-norvig-scientific-computer/scientific_computing.png"><img src="/images/2009-12-20-peter-norvig-scientific-computer/shrunk/scientific_computing.png"></a>
+<a href="/images/2009-12-20-peter-norvig-scientific-computing/scientific_computing.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/scientific_computing.png"></a>
 
 * Weka - <a href="http://kogs-www.informatik.uni-hamburg.de/~meine/weka-python/">http://kogs-www.informatik.uni-hamburg.de/~meine/weka-python/</a>
 *BNT - Bayes Network Toolkit? (<a href="mailto:jd@j2labs.net?subject=bnt">does anyone know?</a>)
