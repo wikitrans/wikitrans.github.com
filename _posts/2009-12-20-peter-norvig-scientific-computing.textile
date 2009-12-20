@@ -38,7 +38,9 @@ Of Python, Peter says, <i>"It's just a few lines to parse the maze into a set of
 
 <a href="/images/2009-12-20-peter-norvig-scientific-computing/half_page.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/half_page.png"></a>
 
-Peter brings up a slide for Naive Bayes word modeling and mentions using a Python Decorator for memoization. I had not considered implementing memoization this way, but now that I've come across it, I can't imagine doing it a different way. It's so concise.
+Peter brings up a slide for Naive Bayes word modeling and mentions using a Python Decorator for memoization. I had not considered implementing memoization this way, but now that I've come across it, I can't imagine doing it a different way. It's so concise. Notice the <code>@memo</code> at the top?
+
+<a href="/images/2009-12-20-peter-norvig-scientific-computing/memoizator.png"><img src="/images/2009-12-20-peter-norvig-scientific-computing/shrunk/memoizator.png"></a>
 
 I found this <a href="http://avinashv.net/2008/04/python-decorators-syntactic-sugar/">blog post</a> compelling for decorators. Memoization is covered.
 
