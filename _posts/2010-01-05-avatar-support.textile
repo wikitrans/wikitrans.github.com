@@ -1,0 +1,16 @@
+---
+layout: post
+title: Avatar Support
+---
+
+h1. {{ page.title }}
+
+p(meta). 04 January 2010 - James - Brooklyn
+
+I have added support for avatars. I remember names best when I have a face. And you have to put up with seeing mine.
+
+<a href="/images/2010-avatar-support/my-mug.png"><img src="/images/2010-avatar-support/shrunk/my-mug.png" /></a>
+
+--
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
