@@ -5,7 +5,7 @@ title: Avatar Support
 
 h1. {{ page.title }}
 
-p(meta). 04 January 2010 - James - Brooklyn
+p(meta). 05 January 2010 - James - Brooklyn
 
 I have added support for avatars. I remember names best when I have a face. And you have to put up with seeing mine.
 
