@@ -9,7 +9,7 @@ p(meta). 04 January 2010 - James - Brooklyn
 
 I have added support for avatars. I remember names best when I have a face. And you have to put up with seeing mine.
 
-<a href="/images/2010-avatar-support/my-mug.png"><img src="/images/2010-avatar-support/shrunk/my-mug.png" /></a>
+<a href="/images/2010-01-05-avatar-support/my-mug.png"><img src="/images/2010-01-05-avatar-support/shrunk/my-mug.png" /></a>
 
 --
 
