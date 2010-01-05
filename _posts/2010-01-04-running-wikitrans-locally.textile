@@ -45,7 +45,7 @@ Let's turn it on! The syncdb step synchronizes the database against the describe
 
 <script src="http://gist.github.com/269156.js"></script>
 
-If that command is working for you, try going to <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>. One of the really neat things about Django development is the good design of URL's. It's basically a side-effect of how Django works, but it also let's me send you a local URL for me that works, but also for you. 
+If that command is working for you, try going to <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>. One of the really neat things about Django development is the good design of URL's. I can link you to a local URL built off 127.0.0.1 and know it will work on your side too.
 
 Try poking around the site a little bit. I would go to the <a href="http://127.0.0.1:8000/articles/request_translation/">Request Translation</a> page and request "Foobar" with a title language of Spanish and a target language of English. If someone gives us a title, they must also give us the language of the Title. For example, 'Johns Hopkins University' is 'Universidad Johns Hopkins' in Spanish. Knowing which language we're looking at saves us having to issue a search query for language offerings every time we want to load an article by it's title.
 
