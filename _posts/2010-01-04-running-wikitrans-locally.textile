@@ -33,7 +33,7 @@ Anyway, we have only done some preliminary setup. This next step is gonna take a
 
 This fetches everything from the Pinax project and install pinax into the virtual environment. We use a similar file for setting up the wikitrans environment too. Once the external_apps install is finished, we use wikitran's requirements.txt file to configure it's environment.
 
-There is a bug that I can't explain just yet with pyyaml so will install it first. It seems to work when we do this rather than letting pip install it as part of the requirements file. ANYWAY.
+There is an ordering bug that I can't explain just yet with pyyaml so will install it first. We then install the <a href="http://www.pythonware.com/products/pil/">Python Imaging Library</a>. It's installation will vary and requires compilation so install that separately. Then install all the libraries listed in the requirements file and we're off.
 
 <script src="http://gist.github.com/269154.js"></script>
 
