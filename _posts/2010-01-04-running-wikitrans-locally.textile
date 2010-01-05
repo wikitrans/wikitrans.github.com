@@ -71,7 +71,7 @@ h2. Educational destruction
 
 Part of development is breaking things for progress. WikiTrans comes bundled with <a href="http://werkzeug.pocoo.org/">Werkzeug</a> as part of the code base so let's break the system and see what it offers us. Open up ~/Projects/wikitrans/wt-app/settings.py and put a comment (# symbol) at the beginning of the line that says "DATABASE_ENGINE='sqlite3'". This will disable the database system and produce an error page on the <a href="http://127.0.0.1:8000">landing</a>. If you put your mouse on one of the dark grey lines that has code on it, you will see two icons on the right side appear. The one that looks like a terminal actually offers a interactive terminal at each code level in the stack output. The icon that looks like a page will expose the relevant code.
 
-Amazing, right? Werkzeug is pretty incredible.
+Amazing, right? Werkzeug is pretty incredible. Don't forget to remove the comment character from line 26 in settings.py.
 
 h2. Conclusion
 
