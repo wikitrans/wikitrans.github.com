@@ -63,6 +63,10 @@ The first command, update_wiki_articles, reads the entries from the ArticleOfInt
 
 Now that you've consumed an article from Wikipedia and split it into sentence segments a Translation Request is generated. That will be here <a href="http://127.0.0.1:8000/admin/wt_articles/translationrequest/">here</a>. The next batch command, translate_google, will search the Translatation Request table for any entries with Google marked as the translator and uses Goopytrans to have Google translate the sentences one by one. We are getting close to having Mechanical Turk hooked in and will be translating via MTurk sentence by sentence also. It also possible to mark a request to be translated by a human, but this has no purpose implemented yet.
 
+Together, those commands look like this.
+
+<script src="http://gist.github.com/269232.js"></script>
+
 After an article has been translated, you will see it in <a href="http://127.0.0.1:8000/articles/list/">The Article List</a>. This list is populated by what languages you have marked yourself competent in. By default, you are marked competent in Spanish as part of the bootstrapping setup from wt_languages.
 
 The <a href="http://127.0.0.1:8000/articles/">Articles landing page</a> is set manually right now. It'd be cool to have this an automated process eventually but I'm not sure how to determine what should be featured yet. Anyway. go <a href="http://127.0.0.1:8000/admin/wt_articles/featuredtranslation/add/">here</a> to pick a Translated Article. Refresh the landing page and there is your article.
