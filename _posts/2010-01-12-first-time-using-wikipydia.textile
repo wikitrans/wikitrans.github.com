@@ -1,0 +1,25 @@
+---
+layout: post
+title: Running wikitrans locally
+---
+
+h1. {{ page.title }}
+
+p(meta). 12 January 2010 - Chris - Baltimore
+
+h2. First Time Using Wikipydia
+
+This weekend I taught myself python and started writing some more code for the wikipydia.py module that James started.  I'm extremely impressed at how easy python and JSON are to use, and how nicely written James's code is.  I picked it up with no problems at all.
+
+h2. Selecting Good Wikipedia Articles
+
+As an introductory exercise, I decide to try to solve the problem of deciding what pages we should translate first.  Because the Wikipedia has so many articles, we won't be able to translate all of them into all other languages -- using Mechanical Turk would be too expensive, and even using machine translation would probably require too many CPU hours to be feasible.  So my goal was to select a subset of articles to translate first. 
+
+We could draw our translation candidates from <a href="http://en.wikipedia.org/wiki/Wikipedia:What_is_a_Featured_article%3F">Wikipedia's Featured Articles</a> that meet the criteria of being well-written, comprehensive, and well researched.  These articles are labeled with the label <a href="http://en.wikipedia.org/wiki/Category:Featured_articles">Category:Featured_articles</a>.  I wrote a method for retrieving members of a given category:
+
+<script src="http://gist.github.com/275868.js?file=gistfile1.py"></script>
+
+
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
