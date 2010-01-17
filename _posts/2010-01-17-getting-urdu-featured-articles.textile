@@ -1,0 +1,42 @@
+---
+layout: post
+title: Getting Urdu Featured Articles
+---
+
+h1. {{ page.title }}
+
+p(meta). 17 January 2010 - Chris - Philadelphia
+
+h2. Motivation for Urdu
+
+One the the initial languages that I'd like to target for WikiTrans is Urdu.  Urdu is one of the two official languages of Pakistan (along with English), it is written in Arabic script, and its word order is subject-object-verb.  I worked on building an Urdu-English machine translation system this summer, and I also experimented with using Mechanical Turk to gather training data.  I had a lot of success getting high quality translations from Turkers, and I'd like to hire them to translate Urdu Wikipedia articles into English to create yet more training data and to populate WikiTrans.
+
+h2. Featured Article Categories
+
+I wanted to get a list of Urdu featured articles, similar to the English ones that I got last weekend.  I found the pages that contain the <a href="http://ur.wikipedia.org/wiki/زمرہ:منتخب_مقالے">Urdu featured articles</a>, and <a href="زمرہ:امیدوار_براۓ_منتخب_مقال">Urdu feature article candidates</a>, but my first hurtle was that I had trouble copying and pasting the Urdu text into my python session.  My work around was to save the two Urdu category labels in a utf8 text file and then read it in, like this:
+
+<script src="http://gist.github.com/279534.js?file=gistfile1.py"></script>
+
+h2. Lists of Featured Articles
+
+Once I've got the access to the category labels, I can grab their members:
+
+<script src="http://gist.github.com/279534.js?file=gistfile3.py"></script>
+<script src="http://gist.github.com/279534.js?file=gistfile4.txt"></script>
+
+h2. Sorted by Page Views
+
+We can then sort the articles based on their page view stats, just like we did for the English featured articles.
+
+<script src="http://gist.github.com/279534.js?file=gistfile5.py"></script>
+<script src="http://gist.github.com/279534.js?file=gistfile6.txt"></script>
+
+h2. Popularity of Urdu Wikipedia
+
+Note that Urdu page views are way smaller than for English.  The most popular Urdu featured article has only been viewed 1,200 times v. 422,000 times for the most popular English featured article in a similar time span.  The Urdu wikipedia has <a href="http://meta.wikimedia.org/wiki/List_of_Wikipedias">far fewer articles than English</a>, with  12,500 articles and a grand total of 270,000 edits versus 3,100,000 English articles which have been edited more than 360,000,000 times.  
+
+My hope is that WikiTrans can be used to translate some of the good English content into Urdu, and that we can nominate well-translated articles from WikiTrans for inclusion the Urdu Wikipedia. 
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
+
