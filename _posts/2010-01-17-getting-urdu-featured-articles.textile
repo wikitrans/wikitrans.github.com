@@ -18,7 +18,8 @@ I wanted to get a list of Urdu featured articles, similar to the English ones th
 <script src="http://gist.github.com/279534.js?file=gistfile1.py"></script>
 
 The file contains these contents (when this is rendered in my web browser there are some boxes that apprea, that aren't there when you click on "raw"):
-<script src="http://gist.github.com/279534.js?file=gistfile2.py"></script>
+
+<script src="http://gist.github.com/279534.js?file=gistfile2.txt"></script>
 
 h2. Lists of Featured Articles
 
