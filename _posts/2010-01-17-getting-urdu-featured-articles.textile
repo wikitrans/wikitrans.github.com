@@ -17,9 +17,11 @@ I wanted to get a list of Urdu featured articles, similar to the English ones th
 
 <script src="http://gist.github.com/279534.js?file=gistfile1.py"></script>
 
-The file contains these contents (when this is rendered in my web browser there are some boxes that apprea, that aren't there when you click on "raw"):
+The file contains these contents:
 
 <script src="http://gist.github.com/279534.js?file=gistfile2.txt"></script>
+
+When the contents above are rendered in my web browser there are some boxes that incorrectly apprear in place of Urdu characters - I'm not sure what's up with that.  They display properly if you click on "view raw" and set the page encoding to UTF8.
 
 h2. Lists of Featured Articles
 
