@@ -34,9 +34,11 @@ Here's an example of what that returns:
 
 <script src="http://gist.github.com/275868.js?file=gistfile4.py"></script>
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
 
 It takes about an hour to gather the stats for all 2738 featured articles in English.  After that we can sort them based on their total views:
 
 <script src="http://gist.github.com/275868.js?file=gistfile5.py"></script>
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
 
