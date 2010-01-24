@@ -7,6 +7,10 @@ h1. {{ page.title }}
 
 p(meta). 04 January 2010 - James - Brooklyn
 
+h2. Update!
+
+Please check the new <a href="http://wiki.github.com/j2labs/wikitrans/wikitrans-setup">setup document</a> found on our wiki.
+
 h2. Setting up the environment
 
 First we need to install some apps and then configure our virutual environment. I use <a href="http://www.macports.org/">Mac Ports</a> but it's not too different to setup a Linux machine. Then pick a directory for where the virtualenv will store it's data. I like to use ~/.virtualenv/. <a href="http://pypi.python.org/pypi/virtualenv">Virtualenv</a> will fail if this directory doesn't exist.
